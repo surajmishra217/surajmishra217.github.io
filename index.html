@@ -6,7 +6,13 @@
 <title>Suraj Mishra — Data Analyst | SQL · Python · Power BI</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  /* Hide the native cursor only after the custom cursor is active. */
+  @media (hover: hover) and (pointer: fine) {
+    html.custom-cursor-ready,
+    html.custom-cursor-ready * { cursor: none !important; }
+  }
 
   :root {
     --ink: #e8ecf0;
@@ -25,7 +31,6 @@
     background: var(--paper);
     color: var(--ink);
     overflow-x: hidden;
-    cursor: none;
   }
 
   /* Custom cursor */
@@ -165,7 +170,7 @@
     color: var(--accent);
     background: transparent;
     transition: all 0.25s ease;
-    cursor: none;
+    cursor: pointer;
   }
   .btn:hover { background: var(--accent); color: var(--paper); }
   .btn-filled { background: var(--accent); border-color: var(--accent); color: var(--paper); }
@@ -380,7 +385,6 @@
     background: var(--card);
     border-left: 3px solid transparent;
     transition: all 0.3s ease;
-    cursor: none;
   }
   .project-item:hover {
     border-left-color: var(--accent);
@@ -2426,37 +2430,59 @@ window.addEventListener('load', () => { renderHRDashboard('all'); });
 
 </script>
 <script>
-  // Custom cursor
+  // Custom cursor: activate only when a real mouse/trackpad pointer is detected.
   const cursor = document.getElementById('cursor');
   const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
-  document.addEventListener('mousemove', e => {
-    mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
-    cursor.style.opacity = '1';
-    ring.style.opacity = '1';
-  });
-  function animateRing() {
-    rx += (mx - rx) * 0.1;
-    ry += (my - ry) * 0.1;
-    ring.style.left = rx + 'px';
-    ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
+  const canUseCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  if (cursor && ring && canUseCustomCursor) {
+    let mx = 0, my = 0, rx = 0, ry = 0;
+
+    document.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+
+      mx = e.clientX;
+      my = e.clientY;
+      cursor.style.left = mx + 'px';
+      cursor.style.top = my + 'px';
+      ring.style.left = mx + 'px';
+      ring.style.top = my + 'px';
+      cursor.style.opacity = '1';
+      ring.style.opacity = '1';
+
+      // The browser cursor is hidden only after this custom cursor is visible.
+      document.documentElement.classList.add('custom-cursor-ready');
+    });
+
+    document.addEventListener('pointerleave', () => {
+      cursor.style.opacity = '0';
+      ring.style.opacity = '0';
+    });
+
+    function animateRing() {
+      rx += (mx - rx) * 0.12;
+      ry += (my - ry) * 0.12;
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      requestAnimationFrame(animateRing);
+    }
+    animateRing();
+
+    document.querySelectorAll('a, button, [onclick], .project-item, .skill-card, .nb-step, .xl-tab, .hr-filter-btn, .contact-link').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%,-50%) scale(0)';
+        ring.style.width = '44px';
+        ring.style.height = '44px';
+        ring.style.borderColor = 'rgba(201,168,76,0.9)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%,-50%) scale(1)';
+        ring.style.width = '30px';
+        ring.style.height = '30px';
+        ring.style.borderColor = 'rgba(201,168,76,0.5)';
+      });
+    });
   }
-  animateRing();
-  document.querySelectorAll('a, button, [onclick], .project-item, .skill-card, .nb-step, .xl-tab, .hr-filter-btn, .contact-link').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(0)';
-      ring.style.width = '44px'; ring.style.height = '44px';
-      ring.style.borderColor = 'rgba(201,168,76,0.9)';
-    });
-    el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-      ring.style.width = '30px'; ring.style.height = '30px';
-      ring.style.borderColor = 'rgba(201,168,76,0.5)';
-    });
-  });
 
   // Data grid animation
   const grid = document.getElementById('dataGrid');
