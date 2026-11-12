@@ -1,2551 +1,308 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Suraj Mishra — Data Analyst | SQL · Python · Power BI</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Fraunces:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet"/>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<meta name="description" content="Suraj Mishra — Data Analyst specializing in SQL, Python, Power BI, product analytics, and predictive modeling.">
+<meta property="og:title" content="Suraj Mishra | Data Analyst">
+<meta property="og:description" content="Turning complex data into clear, actionable business insights.">
+<meta property="og:type" content="website">
+<title>Suraj Mishra | Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  /* Hide the native cursor only after the custom cursor is active. */
-  @media (hover: hover) and (pointer: fine) {
-    html.custom-cursor-ready,
-    html.custom-cursor-ready * { cursor: none !important; }
-  }
-
-  :root {
-    --ink: #e8ecf0;
-    --paper: #080c14;
-    --accent: #c9a84c;
-    --accent2: #4c7ec9;
-    --muted: #4a5a7a;
-    --border: #141e32;
-    --card: #0c1220;
-  }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'DM Mono', monospace;
-    background: var(--paper);
-    color: var(--ink);
-    overflow-x: hidden;
-  }
-
-  /* Custom cursor */
-  .cursor {
-    position: fixed;
-    width: 8px; height: 8px;
-    background: #c9a84c;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99999;
-    transition: transform 0.12s ease, opacity 0.3s;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-  }
-  .cursor-ring {
-    position: fixed;
-    width: 30px; height: 30px;
-    border: 1.5px solid rgba(201,168,76,0.5);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 99998;
-    transition: width 0.2s ease, height 0.2s ease, border-color 0.2s, opacity 0.3s;
-    opacity: 0;
-    transform: translate(-50%, -50%);
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 48px;
-    background: rgba(8,12,20,0.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-  }
-  .nav-logo {
-    font-family: 'Syne', sans-serif;
-    font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .nav-links { display: flex; gap: 32px; list-style: none; }
-  .nav-links a {
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .nav-links a:hover { color: var(--accent); }
-
-  /* HERO */
-  .hero {
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero-left {
-    padding: 100px 48px 60px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    position: relative;
-    z-index: 2;
-  }
-
-  .hero-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.2s forwards;
-  }
-
-  .hero-name {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(4rem, 7vw, 7rem);
-    font-weight: 300;
-    line-height: 0.92;
-    letter-spacing: -0.02em;
-    color: var(--ink);
-    opacity: 0;
-    animation: fadeUp 0.8s 0.4s forwards;
-  }
-  .hero-name em {
-    font-style: italic;
-    color: var(--accent);
-  }
-
-  .hero-role {
-    margin-top: 20px;
-    font-family: 'Syne', sans-serif;
-    font-size: 0.85rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--muted);
-    opacity: 0;
-    animation: fadeUp 0.8s 0.6s forwards;
-  }
-
-  .hero-desc {
-    margin-top: 16px;
-    font-size: 0.8rem;
-    line-height: 1.8;
-    color: var(--muted);
-    max-width: 380px;
-    opacity: 0;
-    animation: fadeUp 0.8s 0.8s forwards;
-  }
-
-  .hero-cta {
-    margin-top: 32px;
-    display: flex; gap: 16px; flex-wrap: wrap;
-    opacity: 0;
-    animation: fadeUp 0.8s 1s forwards;
-  }
-
-  .btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 14px 28px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.7rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: 1.5px solid var(--accent);
-    color: var(--accent);
-    background: transparent;
-    transition: all 0.25s ease;
-    cursor: pointer;
-  }
-  .btn:hover { background: var(--accent); color: var(--paper); }
-  .btn-filled { background: var(--accent); border-color: var(--accent); color: var(--paper); }
-  .btn-filled:hover { background: #00a882; border-color: #00a882; color: var(--paper); }
-
-  .hero-right {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .hero-visual {
-    width: 100%; height: 100%;
-    position: absolute;
-    top: 0; left: 0;
-  }
-
-  /* Animated grid chart */
-  .data-grid {
-    position: absolute;
-    inset: 0;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(16, 1fr);
-    gap: 2px;
-    padding: 60px;
-    opacity: 0;
-    animation: fadeIn 1s 1.2s forwards;
-  }
-
-  .data-cell {
-    background: #0c1428;
-    border-radius: 2px;
-    transition: background 0.3s;
-  }
-  .data-cell.active { background: var(--accent); }
-  .data-cell.active2 { background: var(--accent2); }
-  .data-cell.active3 { background: #1a4a40; }
-
-  .stat-overlay {
-    position: absolute;
-    bottom: 80px; left: 48px;
-    display: flex; flex-direction: column; gap: 24px;
-  }
-
-  .stat-item {
-    opacity: 0;
-    animation: fadeUp 0.6s forwards;
-  }
-  .stat-item:nth-child(1) { animation-delay: 1.4s; }
-  .stat-item:nth-child(2) { animation-delay: 1.6s; }
-  .stat-item:nth-child(3) { animation-delay: 1.8s; }
-
-  .stat-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: var(--accent);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-    margin-top: 4px;
-  }
-
-  /* Divider line */
-  .divider {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0 48px;
-  }
-
-  /* SECTION LAYOUT */
-  section { padding: 60px 48px; }
-
-  .section-label {
-    font-size: 0.62rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 10px;
-  }
-
-  .section-title {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(2rem, 3.5vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: var(--ink);
-    margin-bottom: 36px;
-  }
-
-  /* ABOUT */
-  .about-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-
-  .about-text {
-    font-size: 0.8rem;
-    line-height: 1.9;
-    color: var(--muted);
-  }
-
-  .about-text p + p { margin-top: 14px; }
-
-  .about-details { display: flex; flex-direction: column; gap: 0; }
-
-  .detail-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.72rem;
-  }
-  .detail-key {
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .detail-val { color: var(--ink); }
-
-  /* SKILLS */
-  .skills-section { background: #080c14; color: var(--ink); }
-  .skills-section .section-label { color: var(--accent); }
-  .skills-section .section-title { color: var(--ink); }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2px;
-  }
-
-  .skill-card {
-    background: #0c1020;
-    padding: 28px 24px;
-    position: relative;
-    overflow: hidden;
-    transition: background 0.3s;
-  }
-  .skill-card:hover { background: #0c1428; }
-  .skill-card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 3px;
-    background: var(--accent);
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
-  }
-  .skill-card:hover::before { transform: scaleX(1); }
-
-  .skill-icon {
-    font-size: 1.8rem;
-    margin-bottom: 20px;
-  }
-
-  .skill-card-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.8rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: 16px;
-  }
-
-  .skill-tags {
-    display: flex; flex-wrap: wrap; gap: 8px;
-  }
-  .skill-tag {
-    font-size: 0.62rem;
-    letter-spacing: 0.1em;
-    padding: 5px 10px;
-    border: 1px solid #1a2540;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-
-  /* BAR CHART SKILL METERS */
-  .skill-meter {
-    margin-top: 12px;
-    height: 2px;
-    background: #1a2540;
-    width: 100%;
-  }
-  .skill-meter-fill {
-    height: 100%;
-    background: var(--accent);
-    width: 0%;
-    transition: width 1.2s ease;
-  }
-
-  /* PROJECTS */
-  .projects-list { display: flex; flex-direction: column; gap: 2px; }
-
-  .project-item {
-    display: grid;
-    grid-template-columns: 60px 1fr auto;
-    gap: 28px;
-    align-items: start;
-    padding: 32px 32px;
-    background: var(--card);
-    border-left: 3px solid transparent;
-    transition: all 0.3s ease;
-  }
-  .project-item:hover {
-    border-left-color: var(--accent);
-    background: #101828;
-  }
-
-  .project-num {
-    font-family: 'Fraunces', serif;
-    font-size: 2.5rem;
-    font-weight: 300;
-    color: #141e32;
-    line-height: 1;
-    user-select: none;
-  }
-
-  .project-body {}
-  .project-title {
-    font-family: 'Syne', sans-serif;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 12px;
-  }
-  .project-tools {
-    display: flex; gap: 8px; flex-wrap: wrap;
-    margin-bottom: 16px;
-  }
-  .tool-chip {
-    font-size: 0.6rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    padding: 4px 10px;
-    background: var(--paper);
-    border: 1px solid var(--border);
-    color: var(--muted);
-  }
-  .project-desc {
-    font-size: 0.75rem;
-    line-height: 1.9;
-    color: var(--muted);
-  }
-  .project-desc li { margin-left: 16px; margin-bottom: 6px; }
-
-  .project-arrow {
-    font-size: 1.5rem;
-    color: var(--border);
-    transition: color 0.3s, transform 0.3s;
-    margin-top: 8px;
-  }
-  .project-item:hover .project-arrow {
-    color: var(--accent);
-    transform: translate(4px, -4px);
-  }
-
-  /* EDUCATION */
-  .edu-section { background: var(--card); }
-  .edu-timeline { position: relative; padding-left: 40px; }
-  .edu-timeline::before {
-    content: '';
-    position: absolute;
-    left: 0; top: 8px; bottom: 8px;
-    width: 1px;
-    background: var(--border);
-  }
-
-  .edu-item {
-    position: relative;
-    margin-bottom: 36px;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.6s ease;
-  }
-  .edu-item.visible { opacity: 1; transform: translateX(0); }
-  .edu-item::before {
-    content: '';
-    position: absolute;
-    left: -44px; top: 8px;
-    width: 9px; height: 9px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--card);
-    outline: 1px solid var(--accent);
-  }
-
-  .edu-year {
-    font-size: 0.62rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 8px;
-  }
-  .edu-degree {
-    font-family: 'Fraunces', serif;
-    font-size: 1.4rem;
-    font-weight: 300;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .edu-school {
-    font-size: 0.75rem;
-    color: var(--muted);
-  }
-
-  /* CERTIFICATIONS */
-  .certs-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2px;
-  }
-  .cert-card {
-    background: var(--card);
-    padding: 24px 28px;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-    transition: background 0.3s;
-  }
-  .cert-card:hover { background: #101828; }
-  .cert-icon { font-size: 2rem; flex-shrink: 0; }
-  .cert-body {}
-  .cert-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .cert-issuer {
-    font-size: 0.68rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-  }
-
-  /* AWARDS */
-  .awards-list { display: flex; flex-direction: column; gap: 2px; }
-  .award-item {
-    display: flex; align-items: flex-start; gap: 20px;
-    padding: 22px 32px;
-    background: #080c14;
-    color: var(--ink);
-    transition: background 0.3s;
-  }
-  .award-item:hover { background: #0c1020; }
-  .award-symbol { font-size: 1.5rem; flex-shrink: 0; margin-top: 2px; }
-  .award-text { font-size: 0.78rem; line-height: 1.7; }
-  .award-name {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--ink);
-    margin-bottom: 4px;
-  }
-  .award-detail { color: var(--muted); font-size: 0.7rem; }
-
-  /* CONTACT */
-  .contact-section {
-    background: #080c14;
-    border-top: 1px solid var(--border);
-    color: var(--ink);
-    text-align: center;
-    padding: 72px 48px;
-  }
-  .contact-section .section-label { color: var(--accent); }
-  .contact-section .section-title { color: var(--ink); margin-bottom: 40px; }
-
-  .contact-links {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    flex-wrap: wrap;
-    margin-top: 32px;
-  }
-  .contact-link {
-    display: flex; flex-direction: column; align-items: center; gap: 6px;
-    text-decoration: none;
-    color: var(--ink);
-    padding: 20px 28px;
-    border: 1.5px solid var(--border);
-    transition: all 0.3s;
-    min-width: 160px;
-  }
-  .contact-link:hover { background: rgba(201,168,76,0.07); border-color: var(--accent); }
-  .contact-link-icon { font-size: 1.6rem; }
-  .contact-link-label {
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .contact-link-val {
-    font-size: 0.78rem;
-    color: var(--accent);
-  }
-
-  /* FOOTER */
-  footer {
-    background: #020806;
-    color: var(--muted);
-    padding: 32px 48px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.65rem;
-    letter-spacing: 0.1em;
-  }
-
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-  }
-
-  /* Scroll reveal */
-  .reveal {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.7s ease, transform 0.7s ease;
-  }
-  .reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  /* Ticker */
-  .ticker-wrap {
-    overflow: hidden;
-    background: var(--accent);
-    padding: 14px 0;
-    white-space: nowrap;
-  }
-  .ticker {
-    display: inline-block;
-    animation: ticker 20s linear infinite;
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--paper);
-  }
-  @keyframes ticker {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  /* ===== PYTHON PROJECT ===== */
-  .python-section {
-    background: #080c14;
-    padding: 60px 0 0;
-  }
-  .python-section .section-label { color: #c9a84c; padding: 0 48px; }
-  .python-section .proj-file-badge { margin: 0 48px 10px; }
-  .python-section .section-title { color: #f0ece4; padding: 0 48px; margin-bottom: 0; }
-
-  .py-header {
-    padding: 20px 48px 32px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 48px;
-    align-items: end;
-    border-bottom: 1px solid #141920;
-  }
-  .py-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
-  .py-chip {
-    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 6px 14px; border: 1px solid #1e2433; color: #666;
-    background: #0c1428;
-  }
-  .py-chip.highlight { border-color: #c9a84c; color: #c9a84c; }
-  .py-stats { display: flex; gap: 32px; }
-  .py-stat { text-align: right; }
-  .py-stat-num {
-    font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300;
-    color: #c9a84c; line-height: 1;
-  }
-  .py-stat-label {
-    font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
-    color: #444; margin-top: 4px;
-  }
-
-  .notebook-viewer {
-    display: grid;
-    grid-template-columns: 260px 1fr;
-    min-height: 600px;
-  }
-  .nb-sidebar {
-    background: #080c14;
-    border-right: 1px solid #141920;
-  }
-  .nb-sidebar-title {
-    font-size: 0.55rem; letter-spacing: 0.25em; text-transform: uppercase;
-    color: #2a2a2a; padding: 18px 22px 12px; border-bottom: 1px solid #141920;
-  }
-  .nb-step {
-    padding: 14px 22px;
-    border-bottom: 1px solid #0d1018;
-    cursor: pointer;
-    transition: background 0.2s;
-    display: flex; align-items: flex-start; gap: 10px;
-    border-left: 2px solid transparent;
-  }
-  .nb-step:hover { background: #0c1428; }
-  .nb-step.active { background: #0c1428; border-left-color: #c9a84c; }
-  .nb-step-num { font-size: 0.55rem; color: #2a2a2a; margin-top: 3px; flex-shrink: 0; }
-  .nb-step-name { font-size: 0.65rem; color: #555; line-height: 1.5; }
-  .nb-step.active .nb-step-name { color: #c9a84c; }
-  .nb-step-badge {
-    font-size: 0.5rem; letter-spacing: 0.1em; padding: 2px 6px;
-    margin-top: 4px; display: inline-block; border-radius: 2px;
-  }
-  .badge-code { background: #1a2236; color: #2f6bc8; }
-  .badge-chart { background: #0a0e1c; color: #c9a84c; }
-  .badge-insight { background: #0a0e1c; color: #c9a84c; }
-
-  .nb-content { background: #0d1018; overflow-y: auto; max-height: 680px; }
-  .nb-panel { display: none; padding: 22px 28px; }
-  .nb-panel.active { display: block; }
-  .nb-panel-title {
-    font-family: 'Syne', sans-serif; font-weight: 700;
-    font-size: 1rem; color: #f0ece4; margin-bottom: 6px;
-  }
-  .nb-panel-desc { font-size: 0.72rem; line-height: 1.9; color: #555; margin-bottom: 24px; max-width: 580px; }
-
-  .code-block {
-    background: #060a0f; border: 1px solid #141920;
-    border-left: 3px solid #2f6bc8;
-    padding: 18px 22px; margin-bottom: 16px;
-    font-family: 'DM Mono', monospace; font-size: 0.68rem; line-height: 1.8;
-    color: #8899bb; overflow-x: auto; white-space: pre;
-  }
-  .kw { color: #c084fc; } .fn { color: #60a5fa; }
-  .str { color: #86efac; } .cm { color: #374151; } .num { color: #fb923c; }
-
-  .output-block {
-    background: #08090e; border: 1px solid #141920;
-    border-left: 3px solid #c9a84c;
-    padding: 18px 22px; font-size: 0.65rem; line-height: 1.8; color: #666;
-    margin-bottom: 16px;
-  }
-  .output-label { font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase; color: #2a2a2a; margin-bottom: 8px; }
-
-  .insight-box {
-    background: #080c14; border: 1px solid #141e32; border-left: 3px solid #c9a84c;
-    padding: 16px 20px; margin-bottom: 16px;
-    font-size: 0.7rem; line-height: 1.8; color: #7a5c2a;
-  }
-  .insight-box strong { color: #c9a84c; }
-
-  .nb-chart-wrap {
-    background: #060a0f; border: 1px solid #141920;
-    padding: 22px; margin-bottom: 16px;
-  }
-  .nb-chart-wrap canvas { max-height: 260px; }
-
-  .py-findings {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 2px;
-  }
-  .finding-card {
-    background: #0c1428; padding: 20px 22px;
-    border-top: 2px solid transparent; transition: border-color 0.3s;
-  }
-  .finding-card:hover { border-top-color: #c9a84c; }
-  .finding-icon { font-size: 1.3rem; margin-bottom: 8px; }
-  .finding-title {
-    font-family: 'Syne', sans-serif; font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase; color: #f0ece4; margin-bottom: 6px;
-  }
-  .finding-text { font-size: 0.63rem; line-height: 1.8; color: #444; }
-  .finding-stat {
-    font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 300;
-    color: #c9a84c; margin-bottom: 4px;
-  }
-
-  .py-footer {
-    padding: 22px 48px; background: #080c14;
-    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
-    border-top: 1px solid #141920;
-  }
-  .py-footer-note { font-size: 0.6rem; letter-spacing: 0.1em; color: #2a2a2a; }
-  .py-link-btn {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace; font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
-    padding: 10px 18px; border: 1px solid #1e2433; color: #444;
-    text-decoration: none; transition: all 0.2s; background: none; cursor: pointer;
-  }
-  .py-link-btn:hover { border-color: #c9a84c; color: #c9a84c; }
-
-  /* ===== HR DASHBOARD ===== */
-  .hr-section { background: #080c14; padding: 60px 0 0; }
-  .hr-section .section-label { color: #e8b84b; padding: 0 48px; }
-  .hr-section .proj-file-badge { margin: 0 48px 10px; }
-  .hr-section .section-title { color: #f0ece4; padding: 0 48px; margin-bottom: 0; }
-  .hr-header { padding: 20px 48px 32px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; border-bottom: 1px solid #141e32; }
-  .hr-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .hr-chip { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 13px; border: 1px solid #1a2540; color: #445; background: #0d1428; }
-  .hr-chip.hi { border-color: #e8b84b; color: #e8b84b; }
-  .hr-kpi-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; margin-bottom: 2px; }
-  .hr-kpi { background: #0c1428; padding: 22px 20px; position: relative; overflow: hidden; border-bottom: 2px solid transparent; transition: border-color 0.3s, background 0.3s; }
-  .hr-kpi:hover { background: #121d35; border-bottom-color: #e8b84b; }
-  .hr-kpi-label { font-size: 0.54rem; letter-spacing: 0.18em; text-transform: uppercase; color: #2a3550; margin-bottom: 10px; }
-  .hr-kpi-val { font-family: 'Fraunces', serif; font-size: 1.9rem; font-weight: 300; color: #c8d8f0; line-height: 1; }
-  .hr-kpi-sub { font-size: 0.56rem; color: #3a4560; margin-top: 6px; }
-  .hr-kpi-icon { position: absolute; right: 14px; top: 14px; font-size: 1.2rem; opacity: 0.1; }
-  .hr-filter-bar { background: #0a0e1c; padding: 14px 48px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid #141e32; margin-bottom: 2px; }
-  .hr-filter-label { font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; color: #2a3550; }
-  .hr-filter-btn { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.1em; padding: 6px 14px; background: #0c1428; border: 1px solid #1a2540; color: #445577; cursor: pointer; text-transform: uppercase; transition: all 0.2s; }
-  .hr-filter-btn:hover, .hr-filter-btn.active { background: #e8b84b; border-color: #e8b84b; color: #080c14; font-weight: 700; }
-  .hr-grid-top { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
-  .hr-grid-bottom { display: grid; grid-template-columns: 2fr 1.2fr 1fr; gap: 2px; margin-bottom: 2px; }
-  .hr-chart-box { background: #0c1428; padding: 24px 24px 18px; }
-  .hr-chart-title { font-family: 'Syne', sans-serif; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #3a4a6a; margin-bottom: 18px; }
-  .hr-chart-box canvas { max-height: 220px; }
-  .hr-pivot-wrap { overflow-x: auto; }
-  .hr-pivot { width: 100%; border-collapse: collapse; font-size: 0.6rem; font-family: 'DM Mono', monospace; }
-  .hr-pivot th { background: #0a0e1c; color: #e8b84b; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 12px; border: 1px solid #141e32; text-align: center; }
-  .hr-pivot td { padding: 9px 12px; border: 1px solid #141e32; color: #445577; text-align: center; transition: background 0.2s; }
-  .hr-pivot tr:hover td { background: #121d35; }
-  .hr-pivot td.job-role { color: #7a99cc; text-align: left; white-space: nowrap; }
-  .hr-pivot td.h0 { color: #2a3550; }
-  .hr-pivot td.h1 { background: #0f1e38; color: #5577aa; }
-  .hr-pivot td.h2 { background: #142540; color: #7799cc; }
-  .hr-pivot td.h3 { background: #183050; color: #99bbee; }
-  .hr-pivot td.h4 { background: #1a3d60; color: #e8b84b; font-weight: 600; }
-  .hr-pivot .tot { border-left: 2px solid #1a2540; color: #e8b84b; font-weight: 600; }
-  .hr-findings { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 2px; }
-  .hr-finding { background: #0c1428; padding: 20px 20px; border-top: 2px solid transparent; transition: border-color 0.3s; }
-  .hr-finding:hover { border-top-color: #e8b84b; }
-  .hr-finding-icon { font-size: 1.2rem; margin-bottom: 8px; }
-  .hr-finding-stat { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 300; color: #e8b84b; margin-bottom: 4px; }
-  .hr-finding-title { font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #aabbd8; margin-bottom: 6px; }
-  .hr-finding-text { font-size: 0.62rem; line-height: 1.8; color: #3a4a6a; }
-  .hr-footer { padding: 20px 48px; background: #0a0e1c; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid #141e32; }
-  .hr-footer-note { font-size: 0.56rem; letter-spacing: 0.1em; color: #1e2a40; }
-  .hr-dl-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 9px 18px; border: 1px solid #1a2540; color: #3a4a6a; background: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-  .hr-dl-btn:hover { border-color: #e8b84b; color: #e8b84b; }
-
-  /* ===== EXCEL PROJECT ===== */
-  .excel-section { background: #080c14; padding: 60px 0 0; }
-  .excel-section .section-label { color: #c9a84c; padding: 0 48px; }
-  .excel-section .proj-file-badge { margin: 0 48px 10px; }
-  .excel-section .section-title { color: #e8f4f0; padding: 0 48px; margin-bottom: 0; }
-
-  /* Project type banner */
-  .proj-type-banner {
-    display: flex; align-items: center; gap: 16px;
-    padding: 12px 48px;
-    border-bottom: 1px solid var(--border);
-    background: rgba(201,168,76,0.04);
-  }
-  .proj-type-banner .ptb-icon {
-    font-size: 1.1rem;
-  }
-  .proj-type-banner .ptb-type {
-    font-family: 'Syne', sans-serif;
-    font-size: 0.62rem;
-    font-weight: 800;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-  }
-  .proj-type-banner .ptb-divider {
-    width: 1px; height: 16px; background: var(--border); flex-shrink: 0;
-  }
-  .proj-type-banner .ptb-file {
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.1em;
-    color: var(--muted);
-  }
-  .proj-type-banner .ptb-dot {
-    width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
-  }
-  .ptb-py { border-left: 3px solid #4c7ec9; }
-  .ptb-py .ptb-type { color: #6a9de0; }
-  .ptb-py .ptb-dot { background: #4c7ec9; }
-  .ptb-xl { border-left: 3px solid #c9a84c; }
-  .ptb-xl .ptb-type { color: #c9a84c; }
-  .ptb-xl .ptb-dot { background: #c9a84c; }
-  .ptb-bi { border-left: 3px solid #e8b84b; }
-  .ptb-bi .ptb-type { color: #e8b84b; }
-  .ptb-bi .ptb-dot { background: #e8b84b; }
-
-  /* Project file badge */
-  .proj-file-badge {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 0.58rem;
-    letter-spacing: 0.12em;
-    padding: 5px 12px 5px 10px;
-    border-radius: 3px;
-    margin-bottom: 10px;
-    border: 1px solid;
-  }
-  .proj-file-badge .pf-dot {
-    width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0;
-  }
-  .proj-file-badge.py { background: rgba(240,165,0,0.07); border-color: rgba(240,165,0,0.25); color: #a07000; }
-  .proj-file-badge.py .pf-dot { background: #c9a84c; }
-  .proj-file-badge.xl { background: rgba(201,168,76,0.07); border-color: rgba(201,168,76,0.2); color: #4a6a9a; }
-  .proj-file-badge.xl .pf-dot { background: #c9a84c; }
-  .proj-file-badge.bi { background: rgba(56,189,248,0.07); border-color: rgba(56,189,248,0.25); color: #0070a0; }
-  .proj-file-badge.bi .pf-dot { background: #e8b84b; }
-
-  .xl-header { padding: 16px 48px 24px; display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: end; border-bottom: 1px solid #141e32; }
-  .xl-meta { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
-  .xl-chip { font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 13px; border: 1px solid #141e32; color: #2a5080; background: #0a0e1c; }
-  .xl-chip.hi { border-color: #c9a84c; color: #c9a84c; }
-  .xl-stats { display: flex; gap: 28px; }
-  .xl-stat { text-align: right; }
-  .xl-stat-num { font-family: 'Fraunces', serif; font-size: 2rem; font-weight: 300; color: #c9a84c; line-height: 1; }
-  .xl-stat-label { font-size: 0.54rem; letter-spacing: 0.2em; text-transform: uppercase; color: #2a4070; margin-top: 4px; }
-
-  /* Tab switcher */
-  .xl-tabs { background: #080c14; display: flex; border-bottom: 1px solid #141e32; padding: 0 48px; gap: 0; }
-  .xl-tab { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 16px 24px; color: #2a4070; cursor: pointer; border-bottom: 2px solid transparent; transition: all 0.2s; background: none; border-top: none; border-left: none; border-right: none; }
-  .xl-tab:hover { color: #c9a84c; }
-  .xl-tab.active { color: #c9a84c; border-bottom-color: #c9a84c; }
-
-  .xl-panel { display: none; }
-  .xl-panel.active { display: block; }
-
-  /* KPI row */
-  .xl-kpi-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 2px; }
-  .xl-kpi { background: #0a0e1c; padding: 18px 18px; border-bottom: 2px solid transparent; transition: all 0.3s; position: relative; overflow: hidden; }
-  .xl-kpi:hover { background: #091c16; border-bottom-color: #c9a84c; }
-  .xl-kpi-icon { position: absolute; right: 12px; top: 10px; font-size: 1.1rem; opacity: 0.1; }
-  .xl-kpi-label { font-size: 0.52rem; letter-spacing: 0.18em; text-transform: uppercase; color: #1a3060; margin-bottom: 8px; }
-  .xl-kpi-val { font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 300; color: #c8d4e8; line-height: 1; }
-  .xl-kpi-sub { font-size: 0.52rem; color: #2a4070; margin-top: 4px; }
-
-  /* Charts */
-  .xl-row2 { display: grid; grid-template-columns: 2fr 1fr; gap: 2px; margin-bottom: 2px; }
-  .xl-row3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 2px; }
-  .xl-chart-box { background: #0a0e1c; padding: 18px 18px 14px; }
-  .xl-chart-box canvas { max-height: 220px; }
-  .xl-chart-title { font-family: 'Syne', sans-serif; font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a3060; margin-bottom: 14px; }
-
-  /* Store comparison tab */
-  .xl-store-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 2px; }
-  .xl-store-card { background: #0a0e1c; padding: 22px 22px; border-top: 3px solid #c9a84c; }
-  .xl-store-card:nth-child(2) { border-top-color: #0891b2; }
-  .xl-store-card:nth-child(3) { border-top-color: #a0bce0; }
-  .xl-store-name { font-family: 'Syne', sans-serif; font-size: 1rem; font-weight: 700; color: #c8d4e8; margin-bottom: 20px; }
-  .xl-store-stat { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #141e32; font-size: 0.68rem; }
-  .xl-store-stat-key { color: #2a4070; letter-spacing: 0.08em; }
-  .xl-store-stat-val { color: #c9a84c; font-weight: 500; }
-
-  /* Pivot table */
-  .xl-pivot-wrap { overflow-x: auto; background: #0a0e1c; padding: 24px; margin-bottom: 2px; }
-  .xl-pivot-title { font-family: 'Syne', sans-serif; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #1a3060; margin-bottom: 18px; }
-  .xl-pivot { width: 100%; border-collapse: collapse; font-size: 0.62rem; font-family: 'DM Mono', monospace; }
-  .xl-pivot th { background: #080c14; color: #c9a84c; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 14px; border: 1px solid #141e32; text-align: right; }
-  .xl-pivot th:first-child { text-align: left; }
-  .xl-pivot td { padding: 9px 14px; border: 1px solid #141e32; color: #2a5080; text-align: right; transition: background 0.2s; }
-  .xl-pivot tr:hover td { background: #091c16; }
-  .xl-pivot td:first-child { color: #7a9ec8; text-align: left; }
-  .xl-pivot tr:last-child td { border-top: 2px solid #c9a84c; color: #c9a84c; font-weight: 600; }
-  .xl-pivot td.best { color: #c9a84c; font-weight: 600; }
-
-  /* Insights */
-  .xl-insights { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 2px; }
-  .xl-insight { background: #0a0e1c; padding: 20px 20px; border-top: 2px solid transparent; transition: border-color 0.3s; }
-  .xl-insight:hover { border-top-color: #c9a84c; }
-  .xl-insight-icon { font-size: 1.2rem; margin-bottom: 8px; }
-  .xl-insight-stat { font-family: 'Fraunces', serif; font-size: 1.5rem; font-weight: 300; color: #c9a84c; margin-bottom: 4px; }
-  .xl-insight-title { font-family: 'Syne', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #a8b8d8; margin-bottom: 6px; }
-  .xl-insight-text { font-size: 0.62rem; line-height: 1.8; color: #1a3060; }
-
-  .xl-footer { padding: 20px 48px; background: #080c14; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; border-top: 1px solid #141e32; }
-  .xl-footer-note { font-size: 0.56rem; letter-spacing: 0.1em; color: #141e32; }
-  .xl-dl-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 9px 18px; border: 1px solid #141e32; color: #1a3060; background: none; cursor: pointer; transition: all 0.2s; text-decoration: none; }
-  .xl-dl-btn:hover { border-color: #c9a84c; color: #c9a84c; }
-
-  /* Responsive */
-  @media (max-width: 900px) {
-    nav { padding: 20px 24px; }
-    .nav-links { display: none; }
-    .hero { grid-template-columns: 1fr; }
-    .hero-right { min-height: 40vh; }
-    .hero-left { padding: 120px 24px 60px; }
-    section { padding: 60px 24px; }
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .project-item { grid-template-columns: 60px 1fr; }
-    .project-arrow { display: none; }
-    .certs-grid { grid-template-columns: 1fr; }
-    footer { flex-direction: column; gap: 8px; text-align: center; }
-  }
+:root{--bg:#07111f;--panel:#0d1d30;--panel2:#10243a;--text:#edf5ff;--muted:#a4b7ca;--soft:#7189a2;--line:rgba(160,190,220,.15);--mint:#39e6c1;--blue:#79aaff;--shadow:0 24px 70px rgba(0,0,0,.28);--max:1160px}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;min-width:320px;background:radial-gradient(ellipse at 84% 4%,rgba(54,126,190,.16),transparent 32rem),radial-gradient(ellipse at 5% 34%,rgba(57,230,193,.07),transparent 26rem),var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;line-height:1.65;overflow-x:hidden}a{color:inherit}button{font:inherit}::selection{color:#04121c;background:var(--mint)}.container{width:min(var(--max),calc(100% - 48px));margin-inline:auto}.mono{font-family:'DM Mono',monospace}.section{padding:100px 0}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--mint);font:500 .72rem 'DM Mono',monospace;letter-spacing:.13em;text-transform:uppercase}.eyebrow:before{content:'';width:25px;height:1px;background:var(--mint)}.section-heading{max-width:700px;margin-bottom:40px}.section-heading h2{margin:13px 0 12px;font:800 clamp(2rem,4vw,3.2rem)/1.08 'Manrope',sans-serif;letter-spacing:-.045em}.section-heading p{max-width:630px;margin:0;color:var(--muted)}.accent{color:var(--mint)}.skip-link{position:absolute;left:16px;top:-60px;z-index:10001;padding:10px 14px;border-radius:8px;background:var(--mint);color:#04121c}.skip-link:focus{top:12px}
+
+/* Header */
+.site-header{position:fixed;inset:0 0 auto;z-index:1000;background:rgba(7,17,31,.78);border-bottom:1px solid transparent;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);transition:.25s}.site-header.scrolled{border-color:var(--line);background:rgba(7,17,31,.95)}.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.brand{display:inline-flex;align-items:center;gap:11px;text-decoration:none;font:800 1rem 'Manrope',sans-serif}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;color:#04121c;background:linear-gradient(135deg,var(--mint),#8affdf);font-size:.82rem;box-shadow:0 5px 22px rgba(57,230,193,.2)}.brand-name span{color:var(--mint)}.nav-links{display:flex;align-items:center;gap:27px;list-style:none;margin:0;padding:0}.nav-links a{color:var(--muted);text-decoration:none;font-size:.83rem;font-weight:600;transition:color .2s}.nav-links a:hover,.nav-links a:focus-visible{color:var(--mint)}.nav-links .nav-contact{padding:10px 16px;border:1px solid rgba(57,230,193,.48);border-radius:999px;color:var(--mint)}.nav-contact:hover{background:rgba(57,230,193,.1)}.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:12px;color:var(--text);background:var(--panel);cursor:pointer}
+
+/* Hero */
+.hero{min-height:740px;padding:150px 0 90px;display:flex;align-items:center}.hero-grid{display:grid;grid-template-columns:minmax(0,1.18fr) minmax(330px,.82fr);gap:65px;align-items:center}.availability{display:inline-flex;align-items:center;gap:9px;padding:8px 13px;border:1px solid rgba(57,230,193,.23);border-radius:999px;background:rgba(57,230,193,.07);color:#baf9e9;font:500 .72rem 'DM Mono',monospace}.status-dot{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 5px rgba(57,230,193,.12)}.hero h1{margin:24px 0 15px;font:800 clamp(3.5rem,7.2vw,6.3rem)/.99 'Manrope',sans-serif;letter-spacing:-.075em}.hero h1 span{display:block}.hero-subtitle{margin:0 0 18px;color:#c7d7e8;font:700 clamp(1rem,1.7vw,1.2rem) 'Manrope',sans-serif}.hero-copy{max-width:620px;color:var(--muted);font-size:1.02rem;line-height:1.85}.hero-copy strong{color:var(--text)}.hero-actions,.contact-actions{display:flex;flex-wrap:wrap;gap:13px;margin-top:28px}.btn{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:0 19px;border:1px solid var(--line);border-radius:10px;color:var(--text);text-decoration:none;font-size:.86rem;font-weight:700;transition:transform .2s,background .2s,border-color .2s,box-shadow .2s}.btn:hover{transform:translateY(-2px);border-color:rgba(57,230,193,.55)}.btn-primary{background:var(--mint);color:#041a1b;border-color:var(--mint);box-shadow:0 12px 30px rgba(57,230,193,.14)}.btn-primary:hover{background:#63f0d2}.btn-quiet{background:rgba(255,255,255,.025)}.social-links{display:flex;flex-wrap:wrap;gap:22px;margin-top:27px}.social-links a{color:var(--soft);text-decoration:none;font:500 .76rem 'DM Mono',monospace}.social-links a:hover{color:var(--mint)}
+.hero-card{position:relative;padding:25px;overflow:hidden;border:1px solid rgba(140,180,220,.2);border-radius:24px;background:linear-gradient(150deg,rgba(18,40,62,.96),rgba(9,24,41,.94));box-shadow:var(--shadow)}.hero-card:before{content:'';position:absolute;width:240px;height:240px;right:-100px;top:-120px;border-radius:50%;background:rgba(57,230,193,.12);filter:blur(10px)}.card-top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:20px;border-bottom:1px solid var(--line)}.card-label{color:var(--muted);font:500 .69rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}.live-tag{color:var(--mint);font:500 .65rem 'DM Mono',monospace}.metric-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding-top:17px}.metric{min-height:120px;padding:17px;border:1px solid rgba(160,190,220,.1);border-radius:15px;background:rgba(255,255,255,.025)}.metric strong{display:block;color:var(--mint);font:800 2rem 'Manrope',sans-serif;letter-spacing:-.05em}.metric span{display:block;margin-top:4px;color:var(--muted);font-size:.76rem;line-height:1.4}.card-bottom{display:flex;align-items:center;gap:10px;padding-top:20px;color:var(--muted);font-size:.77rem}.card-bottom .line{flex:1;height:1px;background:var(--line)}
+.focus-strip{border-block:1px solid var(--line);background:rgba(255,255,255,.018)}.focus-items{display:flex;flex-wrap:wrap;justify-content:space-between;gap:14px 25px;padding:20px 0}.focus-items span{color:#b6c8da;font:500 .73rem 'DM Mono',monospace;letter-spacing:.07em;text-transform:uppercase}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr .85fr;gap:58px;align-items:start}.about-copy{color:var(--muted);font-size:1rem;line-height:1.9}.about-copy p{margin:0 0 16px}.about-copy strong{color:var(--text)}.fact-panel{padding:25px;border:1px solid var(--line);border-radius:18px;background:rgba(13,29,48,.68)}.fact-panel h3{margin:0 0 12px;font:700 1rem 'Manrope',sans-serif}.fact-row{display:flex;justify-content:space-between;gap:18px;padding:13px 0;border-bottom:1px solid var(--line);font-size:.84rem}.fact-row:last-child{border-bottom:0}.fact-row span:first-child{color:var(--soft)}.fact-row span:last-child{color:var(--text);text-align:right;font-weight:600}
+
+/* Skills */
+.skills-section{background:linear-gradient(180deg,transparent,rgba(13,29,48,.45),transparent)}.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.skill-card{min-height:210px;padding:24px;border:1px solid var(--line);border-radius:18px;background:rgba(13,29,48,.72);transition:transform .22s,border-color .22s,background .22s}.skill-card:hover{transform:translateY(-4px);border-color:rgba(57,230,193,.35);background:rgba(16,36,58,.92)}.skill-icon{display:grid;place-items:center;width:42px;height:42px;margin-bottom:18px;border-radius:12px;background:rgba(57,230,193,.12);color:var(--mint);font:700 1rem 'DM Mono',monospace}.skill-card h3{margin:0 0 12px;font:700 .98rem 'Manrope',sans-serif}.skill-card p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.8}.skill-note{display:block;margin-top:10px;color:var(--soft);font-size:.72rem}
+
+/* Projects */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.project-card{display:flex;flex-direction:column;min-height:360px;padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,36,58,.92),rgba(10,24,40,.88));transition:transform .22s,border-color .22s,box-shadow .22s}.project-card:hover{transform:translateY(-4px);border-color:rgba(57,230,193,.38);box-shadow:0 18px 45px rgba(0,0,0,.2)}.project-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.project-index{color:var(--mint);font:500 .73rem 'DM Mono',monospace;letter-spacing:.1em}.project-type{padding:5px 9px;border:1px solid rgba(57,230,193,.22);border-radius:999px;color:#9cebdc;font:500 .66rem 'DM Mono',monospace}.project-card h3{margin:0 0 13px;font:700 1.32rem/1.3 'Manrope',sans-serif;letter-spacing:-.025em}.project-card p{margin:0 0 13px;color:var(--muted);font-size:.88rem;line-height:1.8}.project-points{margin:0 0 20px;padding-left:18px;color:#c4d3e2;font-size:.84rem;line-height:1.75}.project-points li{padding-left:4px;margin-bottom:6px}.project-points li::marker{color:var(--mint)}.tech-list{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px}.tech-list span{padding:5px 9px;border:1px solid var(--line);border-radius:7px;color:#a9bfd2;font:500 .66rem 'DM Mono',monospace}.project-result{display:flex;align-items:center;gap:12px;margin-top:auto;padding:14px 15px;border:1px solid rgba(57,230,193,.17);border-radius:12px;background:rgba(57,230,193,.055)}.result-number{color:var(--mint);font:800 1.35rem 'Manrope',sans-serif;white-space:nowrap}.result-label{color:#b2c5d7;font-size:.77rem;line-height:1.45}
+
+/* Approach */
+.approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.approach-item{padding:20px;border-top:2px solid rgba(57,230,193,.45);background:rgba(13,29,48,.55)}.approach-num{color:var(--mint);font:500 .72rem 'DM Mono',monospace}.approach-item h3{margin:12px 0 7px;font:700 .92rem 'Manrope',sans-serif}.approach-item p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
+
+/* Education and credentials */
+.credentials-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.credential-panel{padding:27px;border:1px solid var(--line);border-radius:18px;background:rgba(13,29,48,.72)}.credential-panel h3{margin:0 0 20px;font:700 1.05rem 'Manrope',sans-serif}.education-item{padding:0 0 20px 18px;border-left:2px solid rgba(57,230,193,.45);margin:0 0 20px 4px}.education-item:last-child{padding-bottom:0;margin-bottom:0}.education-date{color:var(--mint);font:500 .7rem 'DM Mono',monospace}.education-item h4{margin:7px 0 4px;font:700 .98rem 'Manrope',sans-serif}.education-item p{margin:0;color:var(--muted);font-size:.83rem}.entry-list{display:grid;gap:13px}.list-entry{display:flex;align-items:flex-start;gap:12px}.list-icon{display:grid;place-items:center;flex:0 0 34px;height:34px;border-radius:10px;background:rgba(57,230,193,.12);color:var(--mint)}.list-entry strong{display:block;color:var(--text);font-size:.87rem}.list-entry small{display:block;margin-top:3px;color:var(--muted);font-size:.77rem;line-height:1.5}
+
+/* Contact and footer */
+.contact-section{padding:90px 0}.contact-card{position:relative;overflow:hidden;padding:clamp(28px,5vw,58px);border:1px solid rgba(57,230,193,.25);border-radius:26px;background:linear-gradient(120deg,rgba(14,42,57,.98),rgba(13,29,48,.94));box-shadow:var(--shadow)}.contact-card:after{content:'';position:absolute;width:330px;height:330px;right:-100px;bottom:-230px;border-radius:50%;background:rgba(57,230,193,.12);filter:blur(8px)}.contact-card h2{position:relative;z-index:1;max-width:700px;margin:12px 0;font:800 clamp(2rem,4.3vw,3.65rem)/1.1 'Manrope',sans-serif;letter-spacing:-.05em}.contact-card p{position:relative;z-index:1;max-width:650px;margin:0;color:var(--muted)}.contact-actions{position:relative;z-index:1}.site-footer{padding:24px 0 30px;border-top:1px solid var(--line);color:var(--soft);font-size:.76rem}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.footer-links{display:flex;gap:18px}.footer-links a{color:var(--muted);text-decoration:none}.footer-links a:hover{color:var(--mint)}
+
+/* High-contrast custom cursor. The system pointer stays visible until this one is running. */
+.cursor-ring,.cursor-dot{position:fixed;left:0;top:0;pointer-events:none;opacity:0;z-index:2147483647;will-change:transform,left,top,opacity}.cursor-ring{width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;border:2px solid #00f5d4;background:rgba(0,245,212,.11);box-shadow:0 0 12px rgba(0,245,212,.8),0 0 28px rgba(0,245,212,.35),inset 0 0 10px rgba(0,245,212,.18);transition:width .18s,height .18s,margin .18s,background .18s,border-color .18s,opacity .12s}.cursor-dot{width:12px;height:12px;margin:-6px 0 0 -6px;border-radius:50%;background:#fff;border:2px solid #00f5d4;box-shadow:0 0 8px rgba(255,255,255,.9),0 0 18px rgba(0,245,212,.9)}.cursor-ring.hovering{width:56px;height:56px;margin:-28px 0 0 -28px;background:rgba(0,245,212,.2);border-color:#fff}
+@media(hover:hover) and (pointer:fine){html.custom-cursor-active,html.custom-cursor-active *{cursor:none!important}html.custom-cursor-active .cursor-ring,html.custom-cursor-active .cursor-dot{opacity:1}}
+.reveal{opacity:1;transform:none}.motion-ready .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}.motion-ready .reveal.visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.motion-ready .reveal{opacity:1;transform:none}}
+@media(max-width:920px){.nav-links{gap:16px}.hero-grid{gap:35px;grid-template-columns:minmax(0,1.1fr) minmax(285px,.9fr)}.skills-grid{grid-template-columns:repeat(2,1fr)}.approach-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:720px){.container{width:min(var(--max),calc(100% - 36px))}.section{padding:76px 0}.nav{min-height:68px}.menu-toggle{display:grid;place-items:center}.nav-links{display:none;position:absolute;top:68px;left:18px;right:18px;padding:14px;border:1px solid var(--line);border-radius:16px;background:rgba(7,17,31,.98);box-shadow:var(--shadow)}.nav-links.open{display:grid;gap:0}.nav-links a{display:block;padding:12px 10px}.nav-links .nav-contact{border:0;padding:12px 10px}.hero{min-height:auto;padding:120px 0 70px}.hero-grid{grid-template-columns:1fr;gap:35px}.hero h1{font-size:clamp(3.35rem,16vw,5.4rem)}.hero-card{max-width:540px}.focus-items{justify-content:flex-start;gap:12px 20px}.about-grid,.credentials-grid{grid-template-columns:1fr;gap:20px}.projects-grid{grid-template-columns:1fr}.project-card{min-height:0}.contact-section{padding:70px 0}}
+@media(max-width:480px){.container{width:calc(100% - 30px)}.skills-grid,.approach-grid{grid-template-columns:1fr}.metric{min-height:105px;padding:14px}.metric strong{font-size:1.7rem}.hero-actions .btn{width:100%}.fact-row{font-size:.77rem}.project-card,.credential-panel{padding:21px}.footer-inner{align-items:flex-start;flex-direction:column}}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
 
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">SM</a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#python-project">Python</a></li>
-    <li><a href="#excel-project">Excel</a></li>
-    <li><a href="#hr-dashboard">HR</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
+<header class="site-header" id="siteHeader">
+<nav class="nav container" aria-label="Main navigation">
+  <a class="brand" href="#home" aria-label="Suraj Mishra home"><span class="brand-mark">SM</span><span class="brand-name">SURAJ<span>.</span></span></a>
+  <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">☰</button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a class="nav-contact" href="#contact">Contact ↗</a></li>
   </ul>
 </nav>
+</header>
 
-<!-- HERO -->
-<section class="hero" style="padding:0;">
-  <div class="hero-left">
-    <p class="hero-tag">// Data Analyst & MCA Candidate</p>
-    <h1 class="hero-name">Suraj<br/><em>Mishra</em></h1>
-    <p class="hero-role">SQL · Python · Power BI · Product & Marketing Analytics</p>
-    <p class="hero-desc">
-      Data-driven analyst specializing in automated dashboards, funnel and cohort analysis, predictive modeling,
-      and translating complex datasets into actionable business insights.
-    </p>
-    <div class="hero-cta">
-      <a href="#projects" class="btn btn-filled">View Projects</a>
-      <a href="#contact" class="btn">Get in Touch</a>
-    </div>
+<main id="main">
+<section class="hero" id="home">
+<div class="container hero-grid">
+  <div class="hero-content reveal">
+    <div class="availability"><span class="status-dot"></span> Open to opportunities · Immediate joining</div>
+    <h1><span>Suraj</span><span>Mishra<span class="accent">.</span></span></h1>
+    <p class="hero-subtitle">Data Analyst <span class="accent">|</span> SQL · Python · Power BI</p>
+    <p class="hero-copy">I turn complex datasets into <strong>clear, actionable business insights</strong>. My focus is on analytics, interactive dashboards, funnel and cohort analysis, and predictive modeling that helps teams make better decisions.</p>
+    <div class="hero-actions"><a class="btn btn-primary" href="#projects">Explore my projects ↗</a><a class="btn btn-quiet" href="mailto:surajmishra16152@gmail.com">Get in touch</a></div>
+    <div class="social-links"><a href="https://www.linkedin.com/in/suraj-mishra-25vc" target="_blank" rel="noopener noreferrer">LINKEDIN ↗</a><a href="https://github.com/surajmishra217" target="_blank" rel="noopener noreferrer">GITHUB ↗</a><a href="mailto:surajmishra16152@gmail.com">EMAIL ↗</a></div>
   </div>
-  <div class="hero-right">
-    <div class="hero-visual">
-      <div class="data-grid" id="dataGrid"></div>
+  <aside class="hero-card reveal" aria-label="Selected project outcomes">
+    <div class="card-top"><span class="card-label">Analytics snapshot</span><span class="live-tag">● PROJECT HIGHLIGHTS</span></div>
+    <div class="metric-grid">
+      <div class="metric"><strong>50K+</strong><span>Transactional rows processed and validated</span></div>
+      <div class="metric"><strong>30%</strong><span>Faster dashboard reporting</span></div>
+      <div class="metric"><strong>15%</strong><span>Improvement in churn model accuracy</span></div>
+      <div class="metric"><strong>8%</strong><span>Retention outcome improvement in HR analysis</span></div>
     </div>
-    <div class="stat-overlay">
-      <div class="stat-item">
-        <div class="stat-num">50K+</div>
-        <div class="stat-label">Data rows processed</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">3</div>
-        <div class="stat-label">Analytics projects</div>
-      </div>
-      <div class="stat-item">
-        <div class="stat-num">30%</div>
-        <div class="stat-label">Reporting speed gain</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <span class="ticker">
-    Data Analysis &nbsp;·&nbsp; Power BI &nbsp;·&nbsp; Python &nbsp;·&nbsp; SQL &nbsp;·&nbsp; Predictive Modeling &nbsp;·&nbsp; ETL &nbsp;·&nbsp; Statistical Analysis &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Data Visualization &nbsp;·&nbsp; A/B Testing &nbsp;·&nbsp;
-    Data Analysis &nbsp;·&nbsp; Power BI &nbsp;·&nbsp; Python &nbsp;·&nbsp; SQL &nbsp;·&nbsp; Predictive Modeling &nbsp;·&nbsp; ETL &nbsp;·&nbsp; Statistical Analysis &nbsp;·&nbsp; Machine Learning &nbsp;·&nbsp; Data Visualization &nbsp;·&nbsp; A/B Testing &nbsp;·&nbsp;
-  </span>
+    <div class="card-bottom"><span>SQL</span><span>·</span><span>Python</span><span>·</span><span>Power BI</span><span class="line"></span><span>2024–25</span></div>
+  </aside>
 </div>
+</section>
 
-<!-- ABOUT -->
-<section id="about">
-  <p class="section-label reveal">// 01 — About</p>
-  <h2 class="section-title reveal">Who I am</h2>
+<div class="focus-strip"><div class="container focus-items"><span>Data analysis</span><span>Business intelligence</span><span>Predictive modeling</span><span>Product analytics</span><span>Marketing analytics</span></div></div>
+
+<section class="section" id="about">
+<div class="container">
+  <div class="section-heading reveal"><span class="eyebrow">01 / About</span><h2>Curious about data.<br><span class="accent">Focused on outcomes.</span></h2></div>
   <div class="about-grid">
-    <div class="about-text reveal">
-      <p>
-        I'm Suraj Mishra — a data-driven analyst with hands-on experience in SQL, Power BI, and Python.
-        I specialize in building automated dashboards, conducting funnel and cohort analysis, and translating complex datasets
-        into actionable business insights. I am pursuing an MCA in Data Science at Lovely Professional University.
-      </p>
-      <p>
-        My work spans product and marketing analytics, customer segmentation, retention analysis, and predictive modeling.
-        I focus on reporting accuracy, performance measurement, data validation, and clear communication with cross-functional stakeholders.
-      </p>
-      <p>
-        I bring a strong analytical foundation, a detail-oriented approach, and the ability to learn quickly.
-        My goal is to turn reliable analysis into practical recommendations that support better business decisions.
-      </p>
+    <div class="about-copy reveal">
+      <p>I'm a data-driven analyst with hands-on project experience in <strong>SQL, Power BI, and Python</strong>. I enjoy building automated dashboards, exploring customer behavior, and translating analysis into recommendations that business teams can use.</p>
+      <p>My project work covers sales funnel analysis, customer churn prediction and segmentation, and HR analytics. I value clean data, reliable reporting, clear documentation, and collaboration with cross-functional stakeholders.</p>
+      <p>I am currently pursuing a <strong>Master of Computer Applications in Data Science</strong> at Lovely Professional University. I bring a detail-oriented approach, a strong analytical foundation, and a willingness to learn new tools and methods.</p>
     </div>
-    <div class="about-details reveal">
-      <div class="detail-row">
-        <span class="detail-key">Registration</span>
-        <span class="detail-val">324200469</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Current Program</span>
-        <span class="detail-val">MCA — Data Science</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">University</span>
-        <span class="detail-val">Lovely Professional University</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Expected Graduation</span>
-        <span class="detail-val">December 2026</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Availability</span>
-        <span class="detail-val">Immediate Joining</span>
-      </div>
-      <div class="detail-row">
-        <span class="detail-key">Work Mode</span>
-        <span class="detail-val">Remote / Relocation</span>
-      </div>
+    <div class="fact-panel reveal">
+      <h3>Quick profile</h3>
+      <div class="fact-row"><span>Current degree</span><span>MCA · Data Science</span></div>
+      <div class="fact-row"><span>University</span><span>Lovely Professional University</span></div>
+      <div class="fact-row"><span>Graduation target</span><span>December 2026</span></div>
+      <div class="fact-row"><span>Project experience</span><span>Independent · 2024–2025</span></div>
+      <div class="fact-row"><span>Work preference</span><span>Remote / Relocation</span></div>
+      <div class="fact-row"><span>Availability</span><span>Immediate joining</span></div>
     </div>
   </div>
+</div>
 </section>
 
-<hr class="divider"/>
-
-<!-- SKILLS -->
-<section id="skills" class="skills-section" style="padding: 60px 0;">
-  <div style="padding: 0 48px;">
-    <p class="section-label reveal">// 02 — Capabilities</p>
-    <h2 class="section-title reveal">What I work with</h2>
-  </div>
+<section class="section skills-section" id="skills">
+<div class="container">
+  <div class="section-heading reveal"><span class="eyebrow">02 / Skills</span><h2>Tools I use to <span class="accent">find the signal.</span></h2><p>A practical toolkit across data querying, visualization, statistical analysis, and business-focused measurement.</p></div>
   <div class="skills-grid">
-    <div class="skill-card reveal">
-      <div class="skill-icon">🐍</div>
-      <div class="skill-card-title">Python Ecosystem</div>
-      <div class="skill-tags">
-        <span class="skill-tag">pandas</span>
-        <span class="skill-tag">numpy</span>
-        <span class="skill-tag">matplotlib</span>
-        <span class="skill-tag">seaborn</span>
-        <span class="skill-tag">scikit-learn</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="88"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🗄️</div>
-      <div class="skill-card-title">SQL & Databases</div>
-      <div class="skill-tags">
-        <span class="skill-tag">MySQL</span>
-        <span class="skill-tag">PostgreSQL</span>
-        <span class="skill-tag">Advanced Querying</span>
-        <span class="skill-tag">Joins</span>
-        <span class="skill-tag">Subqueries</span>
-        <span class="skill-tag">ETL</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="82"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📊</div>
-      <div class="skill-card-title">Business Intelligence</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Power BI</span>
-        <span class="skill-tag">DAX</span>
-        <span class="skill-tag">Excel</span>
-        <span class="skill-tag">VLOOKUP</span>
-        <span class="skill-tag">Pivot Tables</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="90"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">📈</div>
-      <div class="skill-card-title">Analytics Methods</div>
-      <div class="skill-tags">
-        <span class="skill-tag">EDA</span>
-        <span class="skill-tag">A/B Testing</span>
-        <span class="skill-tag">Statistical Analysis</span>
-        <span class="skill-tag">Data Wrangling</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="85"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-card-title">Machine Learning</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Predictive Modeling</span>
-        <span class="skill-tag">Classification</span>
-        <span class="skill-tag">scikit-learn</span>
-        <span class="skill-tag">Feature Engineering</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="75"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🔧</div>
-      <div class="skill-card-title">Data Engineering</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Data Cleaning</span>
-        <span class="skill-tag">ETL Processes</span>
-        <span class="skill-tag">Data Validation</span>
-        <span class="skill-tag">Relational Databases</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="78"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🎯</div>
-      <div class="skill-card-title">Product & Marketing Analytics</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Funnel Analysis</span>
-        <span class="skill-tag">Cohort Analysis</span>
-        <span class="skill-tag">Segmentation</span>
-        <span class="skill-tag">Retention</span>
-        <span class="skill-tag">Feature Adoption</span>
-        <span class="skill-tag">CAC · ROI · CTR (Project Exposure)</span>
-        <span class="skill-tag">Conversions</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="80"></div></div>
-    </div>
-    <div class="skill-card reveal">
-      <div class="skill-icon">🧭</div>
-      <div class="skill-card-title">Platforms & Ways of Working</div>
-      <div class="skill-tags">
-        <span class="skill-tag">Tableau (Working Knowledge)</span>
-        <span class="skill-tag">Superset (Working Knowledge)</span>
-        <span class="skill-tag">Looker (Working Knowledge)</span>
-        <span class="skill-tag">Agile Methodology</span>
-        <span class="skill-tag">Technical Documentation</span>
-      </div>
-      <div class="skill-meter"><div class="skill-meter-fill" data-width="70"></div></div>
-    </div>
+    <article class="skill-card reveal"><div class="skill-icon">⌘</div><h3>SQL & Databases</h3><p>MySQL, PostgreSQL, advanced querying, relational databases, and data retrieval for large-scale analysis and reporting.</p></article>
+    <article class="skill-card reveal"><div class="skill-icon">▦</div><h3>BI & Visualization</h3><p>Power BI and Excel, including Pivot Tables and VLOOKUP, for dashboards, reporting, and clear data presentation.<span class="skill-note">Working knowledge: Tableau, Superset, Looker</span></p></article>
+    <article class="skill-card reveal"><div class="skill-icon">Py</div><h3>Python & Statistics</h3><p>pandas, numpy, matplotlib, seaborn, and scikit-learn for data preparation, statistical analysis, A/B testing, and predictive modeling.</p></article>
+    <article class="skill-card reveal"><div class="skill-icon">◎</div><h3>Product Analytics</h3><p>Funnel analysis, cohort analysis, segmentation, retention, and feature adoption to understand user and customer behavior.</p></article>
+    <article class="skill-card reveal"><div class="skill-icon">↗</div><h3>Marketing Metrics</h3><p>CAC, ROI, CTR, and conversion metrics for project-based digital marketing analysis and performance measurement.<span class="skill-note">Project-based exposure</span></p></article>
+    <article class="skill-card reveal"><div class="skill-icon">⚙</div><h3>Data Workflow</h3><p>ETL processes, data validation, technical documentation, and Agile methodology to support accurate, repeatable analysis.</p></article>
   </div>
+</div>
 </section>
 
-<!-- PYTHON PROJECT -->
-<section id="python-project" class="python-section" style="padding-bottom:0;">
-  <div class="proj-type-banner ptb-py reveal">
-    <span class="ptb-dot"></span>
-    <span class="ptb-icon">🐍</span>
-    <span class="ptb-type">Python Project</span>
-    <span class="ptb-divider"></span>
-    <span class="ptb-file">TCA-checkpoint.ipynb &nbsp;·&nbsp; Python 3 &nbsp;·&nbsp; Jupyter Notebook &nbsp;·&nbsp; pandas · seaborn · scikit-learn</span>
+<section class="section" id="projects">
+<div class="container">
+  <div class="section-heading reveal"><span class="eyebrow">03 / Selected work</span><h2>Projects built around <span class="accent">real questions.</span></h2><p>Independent projects demonstrating dashboard development, predictive analysis, data validation, and business-oriented recommendations.</p></div>
+  <div class="projects-grid">
+    <article class="project-card reveal">
+      <div class="project-meta"><span class="project-index">PROJECT 01 · 2025</span><span class="project-type">Independent project</span></div>
+      <h3>Interactive Sales Dashboard & Funnel Analysis</h3>
+      <p>Built and maintained an interactive Power BI dashboard to track key performance metrics and help users monitor sales performance.</p>
+      <ul class="project-points"><li>Resolved data-refresh and reporting issues for end users.</li><li>Used dynamic filters and optimized visuals to reduce reporting bottlenecks.</li><li>Processed and validated over 50,000 transactional rows to uncover behavioral patterns and sales trends relevant to funnel and conversion analysis.</li></ul>
+      <div class="tech-list"><span>Power BI</span><span>Excel</span><span>Funnel analysis</span><span>Data validation</span></div>
+      <div class="project-result"><span class="result-number">30%</span><span class="result-label">Improvement in reporting speed through dynamic filters and optimized visuals</span></div>
+    </article>
+    <article class="project-card reveal">
+      <div class="project-meta"><span class="project-index">PROJECT 02 · 2025</span><span class="project-type">Independent project</span></div>
+      <h3>Customer Churn Analysis</h3>
+      <p>Developed a predictive churn workflow combining model validation with cohort-style segmentation to study customer retention patterns.</p>
+      <ul class="project-points"><li>Built, tested, and validated a predictive churn model using structured test cases.</li><li>Analyzed over 20,000 customer records with pandas, numpy, matplotlib, and seaborn.</li><li>Documented data cleaning, validation, methodology, experimentation, and findings to support stakeholder decisions and future troubleshooting.</li></ul>
+      <div class="tech-list"><span>Python</span><span>pandas</span><span>numpy</span><span>matplotlib</span><span>seaborn</span><span>scikit-learn</span></div>
+      <div class="project-result"><span class="result-number">15%</span><span class="result-label">Improvement in predictive model accuracy</span></div>
+    </article>
+    <article class="project-card reveal">
+      <div class="project-meta"><span class="project-index">PROJECT 03 · 2024</span><span class="project-type">Independent project</span></div>
+      <h3>HR Analytics Dashboard</h3>
+      <p>Developed and maintained a Power BI dashboard in collaboration with functional stakeholders to turn employee data into structured recommendations.</p>
+      <ul class="project-points"><li>Analyzed over 1,000 employee records.</li><li>Streamlined report generation and supported HR performance and retention analysis.</li><li>Translated findings into recommendations aimed at improving employee retention outcomes.</li></ul>
+      <div class="tech-list"><span>Power BI</span><span>Excel</span><span>HR analytics</span><span>Data analysis</span></div>
+      <div class="project-result"><span class="result-number">25%</span><span class="result-label">Reduction in report generation time · 8% retention outcome improvement</span></div>
+    </article>
   </div>
-  <p class="section-label reveal" style="padding-top:28px;">// 03 — Python Project</p>
-  <h2 class="section-title reveal">Telecom Customer<br/><em style="font-style:italic;color:#c9a84c;">Churn Analysis</em></h2>
-
-  <div class="py-header">
-    <div>
-      <div class="py-meta">
-        <span class="py-chip highlight">Python</span>
-        <span class="py-chip highlight">pandas</span>
-        <span class="py-chip highlight">seaborn</span>
-        <span class="py-chip">matplotlib</span>
-        <span class="py-chip">numpy</span>
-        <span class="py-chip">scikit-learn</span>
-        <span class="py-chip">EDA</span>
-        <span class="py-chip">Predictive Modeling</span>
-      </div>
-    </div>
-    <div class="py-stats">
-      <div class="py-stat">
-        <div class="py-stat-num">7,043</div>
-        <div class="py-stat-label">Customer records</div>
-      </div>
-      <div class="py-stat">
-        <div class="py-stat-num">26.5%</div>
-        <div class="py-stat-label">Churn rate</div>
-      </div>
-      <div class="py-stat">
-        <div class="py-stat-num">21</div>
-        <div class="py-stat-label">Features analysed</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Notebook viewer -->
-  <div class="notebook-viewer">
-    <!-- Sidebar -->
-    <div class="nb-sidebar">
-      <div class="nb-sidebar-title">📓 Notebook Steps</div>
-      <div class="nb-step active" onclick="showPanel('p0',this)">
-        <span class="nb-step-num">[1]</span>
-        <div><div class="nb-step-name">Data Loading & Overview</div><span class="nb-step-badge badge-code">code</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p1',this)">
-        <span class="nb-step-num">[2]</span>
-        <div><div class="nb-step-name">Data Cleaning</div><span class="nb-step-badge badge-code">code</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p2',this)">
-        <span class="nb-step-num">[3]</span>
-        <div><div class="nb-step-name">Churn Distribution</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p3',this)">
-        <span class="nb-step-num">[4]</span>
-        <div><div class="nb-step-name">Churn by Gender</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p4',this)">
-        <span class="nb-step-num">[5]</span>
-        <div><div class="nb-step-name">Senior Citizen Analysis</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p5',this)">
-        <span class="nb-step-num">[6]</span>
-        <div><div class="nb-step-name">Tenure vs Churn</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p6',this)">
-        <span class="nb-step-num">[7]</span>
-        <div><div class="nb-step-name">Contract Type Impact</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p7',this)">
-        <span class="nb-step-num">[8]</span>
-        <div><div class="nb-step-name">Payment Method</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-      <div class="nb-step" onclick="showPanel('p8',this)">
-        <span class="nb-step-num">[9]</span>
-        <div><div class="nb-step-name">Service Features Grid</div><span class="nb-step-badge badge-chart">chart</span></div>
-      </div>
-    </div>
-
-    <!-- Content panels -->
-    <div class="nb-content">
-
-      <!-- Panel 0: Data Loading -->
-      <div class="nb-panel active" id="p0">
-        <div class="nb-panel-title">Data Loading & Dataset Overview</div>
-        <div class="nb-panel-desc">Loading the Customer Churn dataset and inspecting its structure — 7,043 rows and 21 columns covering demographics, services, and billing.</div>
-        <div class="code-block"><span class="kw">import</span> pandas <span class="kw">as</span> pd
-<span class="kw">import</span> numpy <span class="kw">as</span> np
-<span class="kw">import</span> matplotlib.pyplot <span class="kw">as</span> plt
-<span class="kw">import</span> seaborn <span class="kw">as</span> sns
-
-df = pd.<span class="fn">read_csv</span>(<span class="str">'Customer Churn.csv'</span>)
-df.<span class="fn">info</span>()</div>
-        <div class="output-block">
-          <div class="output-label">Output</div>
-RangeIndex: <span style="color:#c9a84c">7043</span> entries, 0 to 7042
-Data columns (total <span style="color:#c9a84c">21</span> columns):
- #   Column             Non-Null Count  Dtype
----  ------             --------------  -----
- 0   customerID         7043 non-null   object
- 1   gender             7043 non-null   object
- 2   SeniorCitizen      7043 non-null   int64
- 3   Partner            7043 non-null   object
- 4   Dependents         7043 non-null   object
- 5   tenure             7043 non-null   int64
- 6   PhoneService       7043 non-null   object
- 7   InternetService    7043 non-null   object
- 8   Contract           7043 non-null   object
- 9   PaymentMethod      7043 non-null   object
-10   MonthlyCharges     7043 non-null   float64
-11   TotalCharges       7043 non-null   object  ← needs cleaning
-12   Churn              7043 non-null   object
-        </div>
-        <div class="insight-box">📋 <strong>Dataset:</strong> 7,043 customer records with 21 features including demographics, subscribed services, contract details, payment method, and churn status.</div>
-      </div>
-
-      <!-- Panel 1: Cleaning -->
-      <div class="nb-panel" id="p1">
-        <div class="nb-panel-title">Data Cleaning & Preprocessing</div>
-        <div class="nb-panel-desc">Fixing TotalCharges (stored as object with blank strings for new customers), converting SeniorCitizen from int to readable labels, and verifying zero nulls.</div>
-        <div class="code-block"><span class="cm"># Fix TotalCharges — blank = tenure 0, no charges</span>
-df[<span class="str">"TotalCharges"</span>] = df[<span class="str">"TotalCharges"</span>].<span class="fn">replace</span>(<span class="str">" "</span>, <span class="num">0</span>)
-df[<span class="str">"TotalCharges"</span>] = df[<span class="str">"TotalCharges"</span>].<span class="fn">astype</span>(<span class="str">"float"</span>)
-
-<span class="cm"># Convert SeniorCitizen 0/1 → readable yes/no</span>
-<span class="kw">def</span> <span class="fn">conv</span>(value):
-    <span class="kw">return</span> <span class="str">"yes"</span> <span class="kw">if</span> value == <span class="num">1</span> <span class="kw">else</span> <span class="str">"no"</span>
-
-df[<span class="str">'SeniorCitizen'</span>] = df[<span class="str">"SeniorCitizen"</span>].<span class="fn">apply</span>(conv)
-
-<span class="cm"># Verify — no nulls, no duplicates</span>
-<span class="fn">print</span>(df.<span class="fn">isnull</span>().<span class="fn">sum</span>().<span class="fn">sum</span>())   <span class="cm"># → 0</span>
-<span class="fn">print</span>(df.<span class="fn">duplicated</span>().<span class="fn">sum</span>())    <span class="cm"># → 0</span></div>
-        <div class="output-block">
-          <div class="output-label">Output</div>
-Null values : <span style="color:#2ecc71">0</span>
-Duplicates  : <span style="color:#2ecc71">0</span>
-TotalCharges dtype: <span style="color:#c9a84c">float64</span> ✓
-        </div>
-        <div class="insight-box">✅ <strong>Clean dataset:</strong> Zero null values, zero duplicates. TotalCharges correctly cast to float. Dataset is ready for EDA.</div>
-      </div>
-
-      <!-- Panel 2: Churn distribution -->
-      <div class="nb-panel" id="p2">
-        <div class="nb-panel-title">Churn Distribution</div>
-        <div class="nb-panel-desc">How many customers churned vs stayed? The pie chart and count plot reveal the class imbalance in the target variable.</div>
-        <div class="code-block">ax = sns.<span class="fn">countplot</span>(x=<span class="str">'Churn'</span>, data=df)
-ax.<span class="fn">bar_label</span>(ax.containers[<span class="num">0</span>])
-plt.<span class="fn">title</span>(<span class="str">"Count of Customers by Churn"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart0" height="200"></canvas>
-        </div>
-        <div class="insight-box">📊 <strong>26.54%</strong> of customers (1,869 out of 7,043) have churned. The remaining <strong>73.46%</strong> (5,174) are retained. This class imbalance is important to account for in any predictive model.</div>
-      </div>
-
-      <!-- Panel 3: Gender -->
-      <div class="nb-panel" id="p3">
-        <div class="nb-panel-title">Churn by Gender</div>
-        <div class="nb-panel-desc">Does gender influence churn behaviour? Comparing male vs female churn rates to identify demographic patterns.</div>
-        <div class="code-block">sns.<span class="fn">countplot</span>(x=<span class="str">"gender"</span>, data=df, hue=<span class="str">"Churn"</span>)
-plt.<span class="fn">title</span>(<span class="str">"Churn by Gender"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart1" height="200"></canvas>
-        </div>
-        <div class="insight-box">⚖️ <strong>Gender is not a significant predictor.</strong> Churn rates are nearly equal — Female: ~27.4%, Male: ~26.2%. Gender-based retention strategies would not be effective.</div>
-      </div>
-
-      <!-- Panel 4: Senior Citizen -->
-      <div class="nb-panel" id="p4">
-        <div class="nb-panel-title">Senior Citizen Churn Analysis</div>
-        <div class="nb-panel-desc">Senior citizens (65+) represent a minority but show a disproportionately high churn rate — a key business segment to address.</div>
-        <div class="code-block">count_data = pd.<span class="fn">crosstab</span>(df[<span class="str">'SeniorCitizen'</span>], df[<span class="str">'Churn'</span>])
-count_data_pct = count_data / count_data.<span class="fn">sum</span>().<span class="fn">sum</span>() * <span class="num">100</span>
-count_data_pct.<span class="fn">plot</span>(kind=<span class="str">'bar'</span>, stacked=<span class="kw">True</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart2" height="200"></canvas>
-        </div>
-        <div class="insight-box">👴 <strong>Senior citizens churn at ~42%</strong> vs ~24% for non-seniors. Despite making up only 16.2% of the customer base, they are a high-risk segment needing targeted retention programs.</div>
-      </div>
-
-      <!-- Panel 5: Tenure -->
-      <div class="nb-panel" id="p5">
-        <div class="nb-panel-title">Tenure vs Churn</div>
-        <div class="nb-panel-desc">Tenure (months with the company) is one of the strongest predictors of churn. Early months are the highest-risk window.</div>
-        <div class="code-block">sns.<span class="fn">histplot</span>(x=<span class="str">"tenure"</span>, data=df,
-             bins=<span class="num">50</span>, hue=<span class="str">"Churn"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart3" height="200"></canvas>
-        </div>
-        <div class="insight-box">⏱️ <strong>Customers in their first 1–2 months churn the most.</strong> After 12+ months, churn drops sharply. Long-term customers (60+ months) are the most loyal. Early engagement programs are critical.</div>
-      </div>
-
-      <!-- Panel 6: Contract -->
-      <div class="nb-panel" id="p6">
-        <div class="nb-panel-title">Contract Type Impact</div>
-        <div class="nb-panel-desc">Contract duration is one of the most powerful churn predictors. Month-to-month customers churn at dramatically higher rates.</div>
-        <div class="code-block">ax = sns.<span class="fn">countplot</span>(x=<span class="str">'Contract'</span>, data=df, hue=<span class="str">"Churn"</span>)
-ax.<span class="fn">bar_label</span>(ax.containers[<span class="num">0</span>])
-plt.<span class="fn">title</span>(<span class="str">"Count of Customer by Contract"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart4" height="200"></canvas>
-        </div>
-        <div class="insight-box">📄 <strong>Month-to-month contracts have a ~43% churn rate</strong> vs ~11% for one-year and ~3% for two-year contracts. Migrating customers to longer contracts is the single biggest retention lever.</div>
-      </div>
-
-      <!-- Panel 7: Payment -->
-      <div class="nb-panel" id="p7">
-        <div class="nb-panel-title">Payment Method Analysis</div>
-        <div class="nb-panel-desc">How customers pay correlates strongly with churn — electronic check users are significantly more likely to leave.</div>
-        <div class="code-block">ax = sns.<span class="fn">countplot</span>(x=<span class="str">'PaymentMethod'</span>,
-                   data=df, hue=<span class="str">"Churn"</span>)
-plt.<span class="fn">xticks</span>(rotation=<span class="num">45</span>)
-plt.<span class="fn">title</span>(<span class="str">"Count by PaymentMethod"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart5" height="200"></canvas>
-        </div>
-        <div class="insight-box">💳 <strong>Electronic check users churn at ~45%</strong> — far above credit card (~15%), bank transfer (~16%), and mailed check (~19%). Auto-payment adoption campaigns could significantly reduce churn.</div>
-      </div>
-
-      <!-- Panel 8: Services -->
-      <div class="nb-panel" id="p8">
-        <div class="nb-panel-title">Service Feature Analysis (3×3 Grid)</div>
-        <div class="nb-panel-desc">Exploring 9 service features — OnlineSecurity, TechSupport, StreamingTV, and more — to see which correlate with higher churn.</div>
-        <div class="code-block">columns = [<span class="str">'PhoneService'</span>, <span class="str">'MultipleLines'</span>,
-           <span class="str">'InternetService'</span>, <span class="str">'OnlineSecurity'</span>,
-           <span class="str">'OnlineBackup'</span>, <span class="str">'DeviceProtection'</span>,
-           <span class="str">'TechSupport'</span>, <span class="str">'StreamingTV'</span>, <span class="str">'StreamingMovies'</span>]
-
-fig, axes = plt.<span class="fn">subplots</span>(<span class="num">3</span>, <span class="num">3</span>, figsize=(<span class="num">15</span>,<span class="num">12</span>))
-<span class="kw">for</span> i, col <span class="kw">in</span> <span class="fn">enumerate</span>(columns):
-    sns.<span class="fn">countplot</span>(x=col, data=df,
-                  ax=axes[i//<span class="num">3</span>][i%<span class="num">3</span>], hue=<span class="str">"Churn"</span>)
-plt.<span class="fn">show</span>()</div>
-        <div class="nb-chart-wrap">
-          <canvas id="pyChart6" height="240"></canvas>
-        </div>
-        <div class="insight-box">🔒 <strong>Customers without OnlineSecurity and TechSupport churn at ~2× the rate</strong> of those who have them. Fiber optic internet users (vs DSL) also show higher churn — possibly due to price sensitivity.</div>
-      </div>
-
-    </div><!-- end nb-content -->
-  </div><!-- end notebook-viewer -->
-
-  <!-- Key Findings -->
-  <div class="py-findings">
-    <div class="finding-card reveal">
-      <div class="finding-icon">⏱️</div>
-      <div class="finding-stat">Month 1–2</div>
-      <div class="finding-title">Highest Risk Window</div>
-      <div class="finding-text">New customers churn most in their first two months. Long-tenure customers (60+ months) are highly loyal. Early onboarding is the most impactful intervention.</div>
-    </div>
-    <div class="finding-card reveal">
-      <div class="finding-icon">📄</div>
-      <div class="finding-stat">43%</div>
-      <div class="finding-title">Month-to-Month Churn</div>
-      <div class="finding-text">Month-to-month contract customers churn at 43% vs just 3% for two-year contracts. The biggest single lever for retention is migrating customers to annual plans.</div>
-    </div>
-    <div class="finding-card reveal">
-      <div class="finding-icon">💳</div>
-      <div class="finding-stat">45%</div>
-      <div class="finding-title">Electronic Check Risk</div>
-      <div class="finding-text">Electronic check payers churn at nearly 3× the rate of auto-payment users. Incentivising automatic payment adoption can drive meaningful churn reduction.</div>
-    </div>
-  </div>
-
-  <div class="py-footer">
-    <span class="py-footer-note">📓 Source: TCA-checkpoint.ipynb · Python 3 · Dataset: Customer Churn.csv · 7,043 rows × 21 cols</span>
-    <button class="py-link-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">↓ Request Full Notebook</button>
-  </div>
+</div>
 </section>
 
-<!-- EXCEL PROJECT -->
-<section id="excel-project" class="excel-section" style="padding-bottom:0;">
-  <div class="proj-type-banner ptb-xl reveal">
-    <span class="ptb-dot"></span>
-    <span class="ptb-icon">📊</span>
-    <span class="ptb-type">Excel Project</span>
-    <span class="ptb-divider"></span>
-    <span class="ptb-file">analysis_project.xlsx &nbsp;·&nbsp; Microsoft Excel &nbsp;·&nbsp; 149,116 rows &nbsp;·&nbsp; Pivot Tables · VLOOKUP · Charts</span>
+<section class="section skills-section" id="approach">
+<div class="container">
+  <div class="section-heading reveal"><span class="eyebrow">04 / Approach</span><h2>From raw data to <span class="accent">useful decisions.</span></h2></div>
+  <div class="approach-grid">
+    <article class="approach-item reveal"><span class="approach-num">STEP 01</span><h3>Understand</h3><p>Clarify the business question, key metrics, and intended outcome.</p></article>
+    <article class="approach-item reveal"><span class="approach-num">STEP 02</span><h3>Prepare</h3><p>Query, clean, transform, and validate data before drawing conclusions.</p></article>
+    <article class="approach-item reveal"><span class="approach-num">STEP 03</span><h3>Analyze</h3><p>Use dashboards, segmentation, statistical methods, and predictive techniques.</p></article>
+    <article class="approach-item reveal"><span class="approach-num">STEP 04</span><h3>Communicate</h3><p>Document the methodology and translate findings into practical recommendations.</p></article>
   </div>
-  <p class="section-label reveal" style="padding-top:28px;">// 04 — Excel Project</p>
-  <h2 class="section-title reveal">Coffee Shop Sales<br/><em style="font-style:italic;color:#c9a84c;">Analysis Dashboard</em></h2>
-
-  <div class="xl-header">
-    <div>
-      <p style="font-size:0.75rem;line-height:1.9;color:#1a3060;max-width:540px;margin-top:16px;">
-        A full sales analysis of a NYC coffee chain across 3 locations — Jan to Jun 2023. Built entirely in Excel with Pivot Tables, slicers, and dynamic charts covering revenue trends, product performance, footfall patterns, and store benchmarking.
-      </p>
-      <div class="xl-meta">
-        <span class="xl-chip hi">Excel</span>
-        <span class="xl-chip hi">Pivot Tables</span>
-        <span class="xl-chip hi">VLOOKUP</span>
-        <span class="xl-chip">Data Cleaning</span>
-        <span class="xl-chip">EDA</span>
-        <span class="xl-chip">Sales Analytics</span>
-      </div>
-    </div>
-    <div class="xl-stats">
-      <div class="xl-stat">
-        <div class="xl-stat-num">149K</div>
-        <div class="xl-stat-label">Transactions</div>
-      </div>
-      <div class="xl-stat">
-        <div class="xl-stat-num">₹6.99L</div>
-        <div class="xl-stat-label">Total Revenue</div>
-      </div>
-      <div class="xl-stat">
-        <div class="xl-stat-num">3</div>
-        <div class="xl-stat-label">NYC Stores</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Tab switcher -->
-  <div class="xl-tabs">
-    <button class="xl-tab active" onclick="xlTab('overview',this)">📊 Overview</button>
-    <button class="xl-tab" onclick="xlTab('products',this)">☕ Products</button>
-    <button class="xl-tab" onclick="xlTab('stores',this)">🏪 Stores</button>
-    <button class="xl-tab" onclick="xlTab('pivot',this)">📋 Pivot Table</button>
-  </div>
-
-  <!-- OVERVIEW TAB -->
-  <div class="xl-panel active" id="xl-overview">
-    <div class="xl-kpi-row">
-      <div class="xl-kpi"><div class="xl-kpi-icon">💰</div><div class="xl-kpi-label">Total Revenue</div><div class="xl-kpi-val">$698,812</div><div class="xl-kpi-sub">Jan–Jun 2023</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">🧾</div><div class="xl-kpi-label">Transactions</div><div class="xl-kpi-val">149,116</div><div class="xl-kpi-sub">Total orders</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">🛒</div><div class="xl-kpi-label">Avg Order Value</div><div class="xl-kpi-val">$4.69</div><div class="xl-kpi-sub">Per transaction</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">📈</div><div class="xl-kpi-label">Peak Month</div><div class="xl-kpi-val">June</div><div class="xl-kpi-sub">$166,486 revenue</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">⏰</div><div class="xl-kpi-label">Peak Hour</div><div class="xl-kpi-val">10 AM</div><div class="xl-kpi-sub">$88,673 total</div></div>
-    </div>
-    <div class="xl-row2">
-      <div class="xl-chart-box"><div class="xl-chart-title">Monthly Revenue Trend</div><canvas id="xlMonthChart" height="200"></canvas></div>
-      <div class="xl-chart-box"><div class="xl-chart-title">Revenue by Day of Week</div><canvas id="xlDayChart" height="200"></canvas></div>
-    </div>
-    <div class="xl-row2">
-      <div class="xl-chart-box"><div class="xl-chart-title">Sales by Hour of Day (Footfall Pattern)</div><canvas id="xlHourChart" height="180"></canvas></div>
-      <div class="xl-chart-box"><div class="xl-chart-title">Revenue by Store Location</div><canvas id="xlStoreChart" height="180"></canvas></div>
-    </div>
-  </div>
-
-  <!-- PRODUCTS TAB -->
-  <div class="xl-panel" id="xl-products">
-    <div class="xl-row3">
-      <div class="xl-chart-box"><div class="xl-chart-title">Revenue by Category</div><canvas id="xlCatChart" height="260"></canvas></div>
-      <div class="xl-chart-box"><div class="xl-chart-title">Top 8 Product Types</div><canvas id="xlProdChart" height="260"></canvas></div>
-      <div class="xl-chart-box"><div class="xl-chart-title">Sales by Cup Size</div><canvas id="xlSizeChart" height="260"></canvas></div>
-    </div>
-    <div class="xl-kpi-row" style="margin-top:2px;">
-      <div class="xl-kpi"><div class="xl-kpi-icon">☕</div><div class="xl-kpi-label">Top Category</div><div class="xl-kpi-val" style="font-size:1.4rem;">Coffee</div><div class="xl-kpi-sub">$269,952 · 38.6%</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">🏆</div><div class="xl-kpi-label">Top Product</div><div class="xl-kpi-val" style="font-size:1.1rem;">Barista Espresso</div><div class="xl-kpi-sub">$91,406 revenue</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">🍵</div><div class="xl-kpi-label">2nd Category</div><div class="xl-kpi-val" style="font-size:1.4rem;">Tea</div><div class="xl-kpi-sub">$196,406 · 28.1%</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">📦</div><div class="xl-kpi-label">Total Categories</div><div class="xl-kpi-val">9</div><div class="xl-kpi-sub">Product categories</div></div>
-      <div class="xl-kpi"><div class="xl-kpi-icon">📐</div><div class="xl-kpi-label">Best Size</div><div class="xl-kpi-val">Large</div><div class="xl-kpi-sub">$237,958 · 34%</div></div>
-    </div>
-  </div>
-
-  <!-- STORES TAB -->
-  <div class="xl-panel" id="xl-stores">
-    <div class="xl-store-grid">
-      <div class="xl-store-card">
-        <div class="xl-store-name">📍 Hell's Kitchen</div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue</span><span class="xl-store-stat-val">$236,511</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Transactions</span><span class="xl-store-stat-val">50,735</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Avg Order</span><span class="xl-store-stat-val">$4.66</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue Share</span><span class="xl-store-stat-val">33.8%</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Rank</span><span class="xl-store-stat-val">🥇 #1</span></div>
-      </div>
-      <div class="xl-store-card">
-        <div class="xl-store-name">📍 Astoria</div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue</span><span class="xl-store-stat-val">$232,244</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Transactions</span><span class="xl-store-stat-val">50,599</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Avg Order</span><span class="xl-store-stat-val">$4.59</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue Share</span><span class="xl-store-stat-val">33.2%</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Rank</span><span class="xl-store-stat-val">🥈 #2</span></div>
-      </div>
-      <div class="xl-store-card">
-        <div class="xl-store-name">📍 Lower Manhattan</div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue</span><span class="xl-store-stat-val">$230,057</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Transactions</span><span class="xl-store-stat-val">47,782</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Avg Order</span><span class="xl-store-stat-val">$4.81</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Revenue Share</span><span class="xl-store-stat-val">32.9%</span></div>
-        <div class="xl-store-stat"><span class="xl-store-stat-key">Rank</span><span class="xl-store-stat-val">🥉 #3</span></div>
-      </div>
-    </div>
-    <div class="xl-row2" style="margin-top:2px;">
-      <div class="xl-chart-box"><div class="xl-chart-title">Monthly Revenue — All 3 Stores</div><canvas id="xlStoreMonthChart" height="220"></canvas></div>
-      <div class="xl-chart-box"><div class="xl-chart-title">Store Revenue Share</div><canvas id="xlStorePieChart" height="220"></canvas></div>
-    </div>
-  </div>
-
-  <!-- PIVOT TAB -->
-  <div class="xl-panel" id="xl-pivot">
-    <div class="xl-pivot-wrap">
-      <div class="xl-pivot-title">📋 Monthly Revenue by Store — Pivot Table (from Excel)</div>
-      <table class="xl-pivot">
-        <thead>
-          <tr>
-            <th>Store Location</th>
-            <th>January</th><th>February</th><th>March</th>
-            <th>April</th><th>May</th><th>June</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>Astoria</td><td>$27,423</td><td>$25,509</td><td>$33,527</td><td>$39,754</td><td>$52,555</td><td>$53,475</td><td class="best">$232,244</td></tr>
-          <tr><td>Hell's Kitchen</td><td>$27,308</td><td>$25,628</td><td>$33,646</td><td>$40,304</td><td>$53,649</td><td>$55,977</td><td class="best">$236,511</td></tr>
-          <tr><td>Lower Manhattan</td><td>$26,947</td><td>$25,008</td><td>$31,662</td><td>$38,883</td><td>$50,524</td><td>$57,034</td><td class="best">$230,057</td></tr>
-          <tr><td>Grand Total</td><td>$81,678</td><td>$76,145</td><td>$98,835</td><td>$118,941</td><td>$156,728</td><td>$166,486</td><td class="best">$698,812</td></tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="xl-pivot-wrap" style="margin-top:2px;">
-      <div class="xl-pivot-title">📋 Transactions by Day of Week (Count of Transaction ID)</div>
-      <table class="xl-pivot">
-        <thead><tr><th>Day</th><th>Transactions</th><th>Revenue</th><th>Avg Order Value</th></tr></thead>
-        <tbody>
-          <tr><td>Monday</td><td>21,643</td><td>$101,677</td><td>$4.70</td></tr>
-          <tr><td>Tuesday</td><td>21,202</td><td>$99,456</td><td>$4.69</td></tr>
-          <tr><td>Wednesday</td><td>21,310</td><td>$100,314</td><td>$4.71</td></tr>
-          <tr><td>Thursday</td><td>21,654</td><td>$100,768</td><td>$4.66</td></tr>
-          <tr><td>Friday</td><td>21,701</td><td>$101,373</td><td>$4.67</td></tr>
-          <tr><td>Saturday</td><td>20,510</td><td>$96,894</td><td>$4.72</td></tr>
-          <tr><td>Sunday</td><td>21,096</td><td>$98,330</td><td>$4.66</td></tr>
-          <tr><td>Grand Total</td><td>149,116</td><td>$698,812</td><td>$4.69</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Key Insights -->
-  <div class="xl-insights">
-    <div class="xl-insight reveal"><div class="xl-insight-icon">📈</div><div class="xl-insight-stat">+104%</div><div class="xl-insight-title">Revenue Growth</div><div class="xl-insight-text">Revenue grew from $81.7K in January to $166.5K in June — a 104% increase in just 6 months, showing strong seasonal momentum.</div></div>
-    <div class="xl-insight reveal"><div class="xl-insight-icon">⏰</div><div class="xl-insight-stat">8–10 AM</div><div class="xl-insight-title">Morning Rush</div><div class="xl-insight-text">Peak revenue occurs between 8–10 AM, accounting for over 37% of daily sales. Staffing and inventory should be optimized for this window.</div></div>
-    <div class="xl-insight reveal"><div class="xl-insight-icon">☕</div><div class="xl-insight-stat">38.6%</div><div class="xl-insight-title">Coffee Dominates</div><div class="xl-insight-text">Coffee drives 38.6% of all revenue ($269K). Barista Espresso alone generates $91K — the single highest-earning product type.</div></div>
-    <div class="xl-insight reveal"><div class="xl-insight-icon">🏪</div><div class="xl-insight-stat">~33%</div><div class="xl-insight-title">Balanced Stores</div><div class="xl-insight-text">All 3 stores contribute remarkably evenly — each within 1% of a 33.3% share. Hell's Kitchen leads marginally at $236,511.</div></div>
-  </div>
-
-  <div class="xl-footer">
-    <span class="xl-footer-note">📊 Source: analysis_project.xlsx · Excel · 149,116 rows × 18 columns · NYC Coffee Chain · Jan–Jun 2023</span>
-    <a href="#contact" class="xl-dl-btn">↓ Request Full Excel File</a>
-  </div>
+</div>
 </section>
 
-<!-- HR ANALYTICS DASHBOARD -->
-<section id="hr-dashboard" class="hr-section" style="padding-bottom:0;">
-  <div class="proj-type-banner ptb-bi reveal">
-    <span class="ptb-dot"></span>
-    <span class="ptb-icon">📈</span>
-    <span class="ptb-type">Power BI Project</span>
-    <span class="ptb-divider"></span>
-    <span class="ptb-file">HR_ANALYTICS_DASHBOARD.pbix &nbsp;·&nbsp; Microsoft Power BI &nbsp;·&nbsp; 1,470 records &nbsp;·&nbsp; DAX · Slicers · Visuals</span>
-  </div>
-  <p class="section-label reveal" style="padding-top:28px;">// 05 — HR Analytics</p>
-  <h2 class="section-title reveal">HR Analytics<br/><em style="font-style:italic;color:#e8b84b;">Attrition Dashboard</em></h2>
-
-  <div class="hr-header">
-    <div>
-      <p style="font-size:0.75rem;line-height:1.9;color:#3a4a6a;max-width:520px;margin-top:16px;">
-        A full workforce attrition analysis built in Power BI — reconstructed here as an interactive live dashboard. 
-        Explore attrition by department, education, age group, salary slab, job role, and tenure. Filter by department to drill down.
-      </p>
-      <div class="hr-meta">
-        <span class="hr-chip hi">Power BI</span>
-        <span class="hr-chip hi">Excel</span>
-        <span class="hr-chip">HR Analytics</span>
-        <span class="hr-chip">Attrition Modeling</span>
-        <span class="hr-chip">Pivot Table</span>
-        <span class="hr-chip">Data-Driven HR</span>
-      </div>
+<section class="section" id="education">
+<div class="container">
+  <div class="section-heading reveal"><span class="eyebrow">05 / Education & recognition</span><h2>Learning, credentials <span class="accent">& recognition.</span></h2></div>
+  <div class="credentials-grid">
+    <div class="credential-panel reveal">
+      <h3>Education</h3>
+      <div class="education-item"><span class="education-date">EXPECTED DECEMBER 2026</span><h4>Master of Computer Applications (MCA)</h4><p>Data Science · Lovely Professional University</p></div>
+      <div class="education-item"><span class="education-date">2024</span><h4>Bachelor of Computer Applications (BCA)</h4><p>Maharaja Agrasen Mahavidyalaya, Bareilly, Uttar Pradesh</p></div>
     </div>
-    <div style="display:flex;gap:28px;">
-      <div style="text-align:right;">
-        <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:#e8b84b;line-height:1;">1,470</div>
-        <div style="font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:#2a3550;margin-top:4px;">Employees</div>
+    <div class="credential-panel reveal">
+      <h3>Certifications</h3>
+      <div class="entry-list">
+        <div class="list-entry"><span class="list-icon">✓</span><div><strong>Google Data Analytics Certification</strong><small>Google</small></div></div>
+        <div class="list-entry"><span class="list-icon">✓</span><div><strong>The Fundamentals of Digital Marketing</strong><small>Google</small></div></div>
       </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:#e8b84b;line-height:1;">237</div>
-        <div style="font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:#2a3550;margin-top:4px;">Attritions</div>
-      </div>
-      <div style="text-align:right;">
-        <div style="font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:#e8b84b;line-height:1;">16.1%</div>
-        <div style="font-size:0.54rem;letter-spacing:0.2em;text-transform:uppercase;color:#2a3550;margin-top:4px;">Attrition Rate</div>
+      <h3 style="margin-top:28px">Awards & scholarships</h3>
+      <div class="entry-list">
+        <div class="list-entry"><span class="list-icon">★</span><div><strong>Education Scholarship Scheme for Army</strong><small>Army Welfare Education Society</small></div></div>
+        <div class="list-entry"><span class="list-icon">★</span><div><strong>All India Merit · Class 10th</strong><small>Top percentile nationally · Army Welfare Education Society</small></div></div>
       </div>
     </div>
   </div>
-
-  <!-- Filter bar -->
-  <div class="hr-filter-bar">
-    <span class="hr-filter-label">Department :</span>
-    <button class="hr-filter-btn active" onclick="hrFilter('all',this)">All</button>
-    <button class="hr-filter-btn" onclick="hrFilter('R&D',this)">R&amp;D</button>
-    <button class="hr-filter-btn" onclick="hrFilter('Sales',this)">Sales</button>
-    <button class="hr-filter-btn" onclick="hrFilter('HR',this)">Human Resources</button>
-  </div>
-
-  <!-- KPI Row -->
-  <div class="hr-kpi-row">
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">👥</div>
-      <div class="hr-kpi-label">Total Employees</div>
-      <div class="hr-kpi-val" id="hk-emp">1,470</div>
-      <div class="hr-kpi-sub">Active workforce</div>
-    </div>
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">📉</div>
-      <div class="hr-kpi-label">Attrition Count</div>
-      <div class="hr-kpi-val" id="hk-attr">237</div>
-      <div class="hr-kpi-sub">Employees left</div>
-    </div>
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">📊</div>
-      <div class="hr-kpi-label">Attrition Rate</div>
-      <div class="hr-kpi-val" id="hk-rate">16.1%</div>
-      <div class="hr-kpi-sub" style="color:#e87;">▲ High-risk</div>
-    </div>
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">🎂</div>
-      <div class="hr-kpi-label">Avg Age</div>
-      <div class="hr-kpi-val" id="hk-age">36.9</div>
-      <div class="hr-kpi-sub">Years</div>
-    </div>
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">💵</div>
-      <div class="hr-kpi-label">Avg Monthly Salary</div>
-      <div class="hr-kpi-val" id="hk-sal">₹6.5K</div>
-      <div class="hr-kpi-sub">Per month</div>
-    </div>
-    <div class="hr-kpi">
-      <div class="hr-kpi-icon">📅</div>
-      <div class="hr-kpi-label">Avg Tenure</div>
-      <div class="hr-kpi-val" id="hk-tenure">7.0</div>
-      <div class="hr-kpi-sub">Years at company</div>
-    </div>
-  </div>
-
-  <!-- Top charts row -->
-  <div class="hr-grid-top">
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Age Group</div>
-      <canvas id="hrAgeChart" height="200"></canvas>
-    </div>
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Education Field</div>
-      <canvas id="hrEduChart" height="200"></canvas>
-    </div>
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Salary Slab</div>
-      <canvas id="hrSalChart" height="200"></canvas>
-    </div>
-  </div>
-
-  <!-- Bottom charts row -->
-  <div class="hr-grid-bottom">
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Years at Company</div>
-      <canvas id="hrTenureChart" height="180"></canvas>
-    </div>
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Job Role</div>
-      <canvas id="hrRoleChart" height="180"></canvas>
-    </div>
-    <div class="hr-chart-box">
-      <div class="hr-chart-title">Attrition by Gender</div>
-      <canvas id="hrGenderChart" height="180"></canvas>
-    </div>
-  </div>
-
-  <!-- Pivot Table -->
-  <div class="hr-chart-box" style="margin-bottom:2px;">
-    <div class="hr-chart-title">Job Role × Job Satisfaction — Attrition Pivot Table</div>
-    <div class="hr-pivot-wrap">
-      <table class="hr-pivot">
-        <thead>
-          <tr>
-            <th>Job Role</th>
-            <th>Satisfaction 1</th>
-            <th>Satisfaction 2</th>
-            <th>Satisfaction 3</th>
-            <th>Satisfaction 4</th>
-            <th class="tot">Total</th>
-          </tr>
-        </thead>
-        <tbody id="hrPivotBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <!-- Key Findings -->
-  <div class="hr-findings">
-    <div class="hr-finding reveal">
-      <div class="hr-finding-icon">👶</div>
-      <div class="hr-finding-stat">116</div>
-      <div class="hr-finding-title">26–35 Highest Attrition</div>
-      <div class="hr-finding-text">The 26–35 age group accounts for the most attrition (116 employees) — early-career professionals seeking growth or better opportunities.</div>
-    </div>
-    <div class="hr-finding reveal">
-      <div class="hr-finding-icon">💰</div>
-      <div class="hr-finding-stat">163</div>
-      <div class="hr-finding-title">Low Salary Risk</div>
-      <div class="hr-finding-text">163 of 237 attritions come from employees earning under ₹5K/month. Competitive compensation is the most direct retention lever.</div>
-    </div>
-    <div class="hr-finding reveal">
-      <div class="hr-finding-icon">🔬</div>
-      <div class="hr-finding-stat">89</div>
-      <div class="hr-finding-title">Life Sciences Field</div>
-      <div class="hr-finding-text">Employees from Life Sciences (89) and Medical (63) backgrounds account for over 64% of all attritions — a key pipeline concern for R&D.</div>
-    </div>
-    <div class="hr-finding reveal">
-      <div class="hr-finding-icon">📆</div>
-      <div class="hr-finding-stat">Year 1</div>
-      <div class="hr-finding-title">First Year is Critical</div>
-      <div class="hr-finding-text">Attrition peaks sharply at Year 1 (59 employees) and Year 5 (secondsry spike). Structured onboarding and year-5 career reviews are crucial.</div>
-    </div>
-  </div>
-
-  <div class="hr-footer">
-    <span class="hr-footer-note">📁 Source: HR_ANALYTICS_DASHBOARD.pbix · Power BI · Dataset: HR_Analytics · 1,470 employee records · 25% report time reduction</span>
-    <a href="#contact" class="hr-dl-btn">↓ Request Full .pbix File</a>
-  </div>
+</div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <p class="section-label reveal">// 06 — Work</p>
-  <h2 class="section-title reveal">Selected Projects</h2>
-  <div class="projects-list">
-
-    <div class="project-item reveal">
-      <div class="project-num">01</div>
-      <div class="project-body">
-        <div class="project-title">Interactive Sales Dashboard & Funnel Analysis</div>
-        <div class="project-tools">
-          <span class="tool-chip">Power BI</span>
-          <span class="tool-chip">Excel</span>
-          <span class="tool-chip">Funnel Analysis</span>
-        </div>
-        <ul class="project-desc">
-          <li>Built and maintained an interactive Power BI dashboard tracking key performance metrics, resolving data refresh and reporting issues for end users.</li>
-          <li>Improved reporting speed by <strong>30%</strong> through dynamic filters and optimized visuals.</li>
-          <li>Processed and validated over <strong>50,000 rows</strong> of transactional data to identify behavioral patterns and sales trends.</li>
-        </ul>
-      </div>
-      <div class="project-arrow">↗</div>
-    </div>
-
-    <div class="project-item reveal">
-      <div class="project-num">02</div>
-      <div class="project-body">
-        <div class="project-title">Customer Churn Analysis — Predictive Modeling & Segmentation</div>
-        <div class="project-tools">
-          <span class="tool-chip">Python</span>
-          <span class="tool-chip">pandas</span>
-          <span class="tool-chip">numpy</span>
-          <span class="tool-chip">scikit-learn</span>
-          <span class="tool-chip">Cohort Segmentation</span>
-        </div>
-        <ul class="project-desc">
-          <li>Built, tested, and validated a predictive churn model using structured test cases and cohort-style segmentation.</li>
-          <li>Improved prediction accuracy by <strong>15%</strong> to support customer retention analysis.</li>
-          <li>Analyzed over <strong>20,000 customer records</strong> using pandas, numpy, matplotlib, and seaborn, with documented methodology and findings.</li>
-        </ul>
-      </div>
-      <div class="project-arrow">↗</div>
-    </div>
-
-    <div class="project-item reveal">
-      <div class="project-num">03</div>
-      <div class="project-body">
-        <div class="project-title">HR Analytics Dashboard</div>
-        <div class="project-tools">
-          <span class="tool-chip">Power BI</span>
-          <span class="tool-chip">Excel</span>
-          <span class="tool-chip">HR Analytics</span>
-        </div>
-        <ul class="project-desc">
-          <li>Developed and maintained a Power BI dashboard in collaboration with functional stakeholders.</li>
-          <li>Reduced report generation time by <strong>25%</strong>.</li>
-          <li>Analyzed over <strong>1,000 employee records</strong>, translating findings into recommendations that improved retention outcomes by <strong>8%</strong>.</li>
-        </ul>
-      </div>
-      <div class="project-arrow">↗</div>
-    </div>
-
-  </div>
-</section>
-
-<hr class="divider"/>
-
-<!-- EDUCATION -->
-<section id="education" class="edu-section">
-  <p class="section-label reveal">// 04 — Education</p>
-  <h2 class="section-title reveal">Academic Journey</h2>
-  <div class="edu-timeline">
-    <div class="edu-item">
-      <div class="edu-year">2024 — 2026 (Expected)</div>
-      <div class="edu-degree">Master of Computer Applications</div>
-      <div class="edu-school">Specialization in Data Science · Lovely Professional University</div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-year">2021 — 2024</div>
-      <div class="edu-degree">Bachelor of Computer Applications</div>
-      <div class="edu-school">Maharaja Agrasen Mahavidyalaya, Bareilly, U.P.</div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-year">2019</div>
-      <div class="edu-degree">Class XII (Pre-Degree)</div>
-      <div class="edu-school">Kendriya Vidyalaya J.R.C., Bareilly Cantt</div>
-    </div>
-    <div class="edu-item">
-      <div class="edu-year">2017</div>
-      <div class="edu-degree">Class X (Secondary)</div>
-      <div class="edu-school">Kendriya Vidyalaya J.R.C., Bareilly Cantt</div>
+<section class="contact-section" id="contact">
+<div class="container">
+  <div class="contact-card reveal">
+    <span class="eyebrow">06 / Contact</span>
+    <h2>Let's turn data into <span class="accent">your next decision.</span></h2>
+    <p>I'm open to data analytics opportunities, remote work, and relocation. Available for immediate joining.</p>
+    <div class="contact-actions">
+      <a class="btn btn-primary" href="mailto:surajmishra16152@gmail.com">surajmishra16152@gmail.com ↗</a>
+      <a class="btn btn-quiet" href="https://www.linkedin.com/in/suraj-mishra-25vc" target="_blank" rel="noopener noreferrer">Connect on LinkedIn ↗</a>
+      <a class="btn btn-quiet" href="https://github.com/surajmishra217" target="_blank" rel="noopener noreferrer">GitHub profile ↗</a>
     </div>
   </div>
+</div>
 </section>
+</main>
 
-<hr class="divider"/>
+<footer class="site-footer"><div class="container footer-inner"><span>© 2026 Suraj Mishra · Data Analyst</span><span>SQL · Python · Power BI</span><div class="footer-links"><a href="mailto:surajmishra16152@gmail.com">Email</a><a href="https://www.linkedin.com/in/suraj-mishra-25vc" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://github.com/surajmishra217" target="_blank" rel="noopener noreferrer">GitHub</a></div></div></footer>
 
-<!-- CERTIFICATIONS -->
-<section>
-  <p class="section-label reveal">// 05 — Credentials</p>
-  <h2 class="section-title reveal">Certifications</h2>
-  <div class="certs-grid">
-    <div class="cert-card reveal">
-      <div class="cert-icon">🎓</div>
-      <div class="cert-body">
-        <div class="cert-name">Google Data Analytics Certification</div>
-        <div class="cert-issuer">Google</div>
-      </div>
-    </div>
-    <div class="cert-card reveal">
-      <div class="cert-icon">📱</div>
-      <div class="cert-body">
-        <div class="cert-name">The Fundamentals of Digital Marketing</div>
-        <div class="cert-issuer">Google</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- AWARDS -->
-<section style="padding-top: 0;">
-  <p class="section-label reveal">// 06 — Recognition</p>
-  <h2 class="section-title reveal">Awards & Scholarships</h2>
-  <div class="awards-list">
-    <div class="award-item reveal">
-      <div class="award-symbol">🏅</div>
-      <div class="award-text">
-        <div class="award-name">Education Scholarship Scheme for Army</div>
-        <div class="award-detail">Sponsored by Army Welfare Education Society</div>
-      </div>
-    </div>
-    <div class="award-item reveal">
-      <div class="award-symbol">🌟</div>
-      <div class="award-text">
-        <div class="award-name">All India Merit — Class 10th (2016–17)</div>
-        <div class="award-detail">Recognized among top performers nationally · Army Welfare Education Society</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact" class="contact-section" style="padding: 120px 48px;">
-  <p class="section-label">// 07 — Contact</p>
-  <h2 class="section-title">Let's build<br/><em style="font-style:italic;">something</em> together</h2>
-  <p style="font-size:0.8rem; color:var(--muted); max-width:480px; margin: 0 auto; line-height:1.8;">
-    Open to full-time roles, internships, and freelance analytics projects.
-    Available for immediate joining. Happy to relocate or work remotely.
-  </p>
-  <div class="contact-links">
-    <a href="/cdn-cgi/l/email-protection#fe8d8b8c9f9493978d968c9fcfc8cfcbccbe99939f9792d09d9193" class="contact-link">
-      <span class="contact-link-icon">✉️</span>
-      <span class="contact-link-label">Email</span>
-      <span class="contact-link-val"><span class="__cf_email__" data-cfemail="20535552414a4d4953485241111611151260474d41494c0e434f4d">[email&#160;protected]</span></span>
-    </a>
-    <a href="https://www.linkedin.com/in/suraj-mishra-25vc" target="_blank" class="contact-link">
-      <span class="contact-link-icon">💼</span>
-      <span class="contact-link-label">LinkedIn</span>
-      <span class="contact-link-val">suraj-mishra-25vc</span>
-    </a>
-    <a href="#" class="contact-link">
-      <span class="contact-link-icon">📍</span>
-      <span class="contact-link-label">Location</span>
-      <span class="contact-link-val">Bareilly, U.P. · India</span>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <span>© 2026 Suraj Mishra — Data Analyst</span>
-  <span>Reg. No. 324200469 · LPU</span>
-</footer>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
-// ===== EXCEL PROJECT =====
-const XL_TEAL = '#c9a84c';
-const XL_CYAN = '#4c7ec9';
-const XL_MINT = '#a0bce0';
-const XL_GRID = 'rgba(255,255,255,0.04)';
-const XL_TEXT = '#1a3060';
+(function () {
+  'use strict';
+  var header = document.getElementById('siteHeader');
+  var menuToggle = document.getElementById('menuToggle');
+  var navLinks = document.getElementById('navLinks');
 
-let xlCharts = {};
-let xlInitialized = {};
-
-function xlTab(tab, btn) {
-  document.querySelectorAll('.xl-tab').forEach(b => b.classList.remove('active'));
-  document.querySelectorAll('.xl-panel').forEach(p => p.classList.remove('active'));
-  btn.classList.add('active');
-  document.getElementById('xl-' + tab).classList.add('active');
-  if (!xlInitialized[tab]) { xlInitialized[tab] = true; renderXLCharts(tab); }
-}
-
-function renderXLCharts(tab) {
-  Chart.defaults.color = XL_TEXT;
-  Chart.defaults.font.family = "'DM Mono', monospace";
-  Chart.defaults.font.size = 10;
-  const sc = { x:{grid:{color:XL_GRID},ticks:{color:XL_TEXT}}, y:{grid:{color:XL_GRID},ticks:{color:XL_TEXT}} };
-  const noL = { plugins:{legend:{display:false}} };
-
-  if (tab === 'overview') {
-    // Monthly revenue
-    xlCharts.month = new Chart(document.getElementById('xlMonthChart'), {
-      type:'line',
-      data:{ labels:['Jan','Feb','Mar','Apr','May','Jun'],
-        datasets:[{ data:[81678,76145,98835,118941,156728,166486],
-          borderColor:XL_TEAL, backgroundColor:'rgba(201,168,76,0.07)',
-          fill:true, tension:0.4, pointBackgroundColor:XL_TEAL, pointRadius:4, pointHoverRadius:6 }]},
-      options:{ responsive:true, maintainAspectRatio:true, ...noL, scales:{
-        x:{grid:{color:XL_GRID},ticks:{color:XL_TEXT}},
-        y:{grid:{color:XL_GRID},ticks:{color:XL_TEXT, callback:v=>'$'+(v/1000).toFixed(0)+'K'}}}}
-    });
-    // Day of week
-    xlCharts.day = new Chart(document.getElementById('xlDayChart'), {
-      type:'bar',
-      data:{ labels:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
-        datasets:[{ data:[101677,99456,100314,100768,101373,96894,98330],
-          backgroundColor:['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map((_,i)=>i===4?XL_TEAL+'dd':'rgba(201,168,76,0.3)'), borderRadius:4 }]},
-      options:{ responsive:true, maintainAspectRatio:true, ...noL, scales:{
-        x:{grid:{display:false},ticks:{color:XL_TEXT}},
-        y:{grid:{color:XL_GRID},ticks:{color:XL_TEXT, callback:v=>'$'+(v/1000).toFixed(0)+'K'}}}}
-    });
-    // Hourly
-    xlCharts.hour = new Chart(document.getElementById('xlHourChart'), {
-      type:'bar',
-      data:{ labels:['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'],
-        datasets:[{ data:[21900,63526,82700,85170,88673,46319,40193,40367,41305,41733,41123,40134,34286,28447,2936],
-          backgroundColor:[...Array(15)].map((_,i)=>(i>=2&&i<=4)?XL_TEAL+'cc':'rgba(201,168,76,0.25)'), borderRadius:3 }]},
-      options:{ responsive:true, maintainAspectRatio:true, ...noL, scales:{
-        x:{grid:{display:false},ticks:{color:XL_TEXT,font:{size:9}}},
-        y:{grid:{color:XL_GRID},ticks:{color:XL_TEXT, callback:v=>'$'+(v/1000).toFixed(0)+'K'}}}}
-    });
-    // Store bar
-    xlCharts.store = new Chart(document.getElementById('xlStoreChart'), {
-      type:'bar',
-      data:{ labels, datasets:[{ data:[236511,232244,230057],
-        backgroundColor:[XL_TEAL+'dd',XL_CYAN+'cc',XL_MINT+'99'], borderRadius:4 }]},
-      options:{ indexAxis:'y', responsive:true, maintainAspectRatio:true, ...noL, scales:{
-        x:{grid:{color:XL_GRID},ticks:{color:XL_TEXT,callback:v=>'$'+(v/1000).toFixed(0)+'K'}},
-        y:{grid:{display:false},ticks:{color:XL_TEXT}}}}
-    });
-    // fix labels ref
-    xlChters = xlCharts.store;
-    xlCharts.store.data.labels = ["Hell's Kitchen","Astoria","Lower Manhattan"];
-    xlCharts.store.update();
+  function updateHeader() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 12);
   }
+  updateHeader();
+  window.addEventListener('scroll', updateHeader, { passive: true });
 
-  if (tab === 'products') {
-    xlCharts.cat = new Chart(document.getElementById('xlCatChart'), {
-      type:'doughnut',
-      data:{ labels:['Coffee','Tea','Bakery','Drinking Choc','Coffee Beans','Branded','Loose Tea','Flavours','Packaged Choc'],
-        datasets:[{ data:[269952,196406,82316,72416,40085,13607,11214,8409,4408],
-          backgroundColor:['#c9a84c','#4c7ec9','#a0bce0','#0e7490','#a7f3d0','#164e63','#34d399','#0369a1','#065f46'], borderWidth:0, hoverOffset:8 }]},
-      options:{ responsive:true, maintainAspectRatio:true, cutout:'55%',
-        plugins:{legend:{position:'bottom',labels:{color:XL_TEXT,padding:8,font:{size:9}}}}}
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(open));
+      menuToggle.textContent = open ? '×' : '☰';
     });
-    xlCharts.prod = new Chart(document.getElementById('xlProdChart'), {
-      type:'bar',
-      data:{ labels:['Barista Espresso','Brewed Chai','Hot Chocolate','Gourmet Brew','Brewed Black Tea','Brewed Herbal','Premium Brew','Organic Brew'],
-        datasets:[{ data:[91406,77082,72416,70035,47932,47540,38781,37747],
-          backgroundColor:[...Array(8)].map((_,i)=>i===0?XL_TEAL+'dd':'rgba(201,168,76,0.35)'), borderRadius:3 }]},
-      options:{ indexAxis:'y', responsive:true, maintainAspectRatio:true, ...noL, scales:{
-        x:{grid:{color:XL_GRID},ticks:{color:XL_TEXT,callback:v=>'$'+(v/1000).toFixed(0)+'K'}},
-        y:{grid:{display:false},ticks:{color:XL_TEXT,font:{size:9}}}}}
-    });
-    xlCharts.size = new Chart(document.getElementById('xlSizeChart'), {
-      type:'doughnut',
-      data:{ labels:['Large','Not Defined','Regular','Small'],
-        datasets:[{ data:[237958,214690,199761,46403],
-          backgroundColor:[XL_TEAL,'#4c7ec9','#a0bce0','#164e63'], borderWidth:0, hoverOffset:8 }]},
-      options:{ responsive:true, maintainAspectRatio:true, cutout:'55%',
-        plugins:{legend:{position:'bottom',labels:{color:XL_TEXT,padding:10,font:{size:9}}}}}
+    navLinks.querySelectorAll('a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰';
+      });
     });
   }
 
-  if (tab === 'stores') {
-    const months = ['Jan','Feb','Mar','Apr','May','Jun'];
-    xlCharts.storeMonth = new Chart(document.getElementById('xlStoreMonthChart'), {
-      type:'line',
-      data:{ labels:months, datasets:[
-        { label:"Hell's Kitchen", data:[27308,25628,33646,40304,53649,55977], borderColor:XL_TEAL, backgroundColor:'transparent', tension:0.4, pointRadius:3 },
-        { label:'Astoria', data:[27423,25509,33527,39754,52555,53475], borderColor:XL_CYAN, backgroundColor:'transparent', tension:0.4, pointRadius:3 },
-        { label:'Lower Manhattan', data:[26947,25008,31662,38883,50524,57034], borderColor:XL_MINT, backgroundColor:'transparent', tension:0.4, pointRadius:3 },
-      ]},
-      options:{ responsive:true, maintainAspectRatio:true,
-        plugins:{legend:{labels:{color:XL_TEXT,padding:14}}},
-        scales:{ x:{grid:{color:XL_GRID},ticks:{color:XL_TEXT}}, y:{grid:{color:XL_GRID},ticks:{color:XL_TEXT,callback:v=>'$'+(v/1000).toFixed(0)+'K'}} }}
+  /* Custom cursor: show it first, then hide the native cursor. */
+  var ring = document.getElementById('cursorRing');
+  var dot = document.getElementById('cursorDot');
+  var finePointer = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (ring && dot && finePointer) {
+    var x = 0, y = 0, rx = 0, ry = 0, active = false;
+    document.addEventListener('pointermove', function (event) {
+      if (event.pointerType === 'touch') return;
+      x = event.clientX;
+      y = event.clientY;
+      if (!active) { rx = x; ry = y; active = true; }
+      dot.style.left = x + 'px';
+      dot.style.top = y + 'px';
+      ring.style.left = rx + 'px';
+      ring.style.top = ry + 'px';
+      document.documentElement.classList.add('custom-cursor-active');
+    }, { passive: true });
+
+    document.addEventListener('pointerover', function (event) {
+      var target = event.target && event.target.closest ? event.target.closest('a, button') : null;
+      ring.classList.toggle('hovering', !!target);
     });
-    xlCharts.storePie = new Chart(document.getElementById('xlStorePieChart'), {
-      type:'doughnut',
-      data:{ labels:["Hell's Kitchen (33.8%)","Astoria (33.2%)","Lower Manhattan (32.9%)"],
-        datasets:[{ data:[236511,232244,230057], backgroundColor:[XL_TEAL+'dd',XL_CYAN+'cc',XL_MINT+'99'], borderWidth:0, hoverOffset:8 }]},
-      options:{ responsive:true, maintainAspectRatio:true, cutout:'55%',
-        plugins:{legend:{position:'bottom',labels:{color:XL_TEXT,padding:12,font:{size:9}}}}}
+    document.addEventListener('pointerout', function (event) {
+      var next = event.relatedTarget;
+      if (!next || !next.closest || !next.closest('a, button')) ring.classList.remove('hovering');
     });
-  }
-}
-
-window.addEventListener('load', () => { xlInitialized['overview'] = true; renderXLCharts('overview'); });
-// ===== END EXCEL PROJECT =====
-
-// ===== PYTHON PROJECT NOTEBOOK =====
-
-function showPanel(id, stepEl) {
-  document.querySelectorAll('.nb-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nb-step').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
-  stepEl.classList.add('active');
-  // render chart for this panel if not yet rendered
-  renderPyChart(id);
-}
-
-const PY_AMBER = '#c9a84c';
-const PY_BLUE = '#4c7ec9';
-const PY_RED = '#c9a84c';
-const PY_GREEN = '#2ecc71';
-const PY_DARK_GRID = 'rgba(255,255,255,0.04)';
-const PY_TEXT = '#555';
-
-let pyCharts = {};
-function renderPyChart(panelId) {
-  const map = {
-    'p2': 'pyChart0', 'p3': 'pyChart1', 'p4': 'pyChart2',
-    'p5': 'pyChart3', 'p6': 'pyChart4', 'p7': 'pyChart5', 'p8': 'pyChart6'
-  };
-  const cid = map[panelId];
-  if (!cid || pyCharts[cid]) return;
-
-  const el = document.getElementById(cid);
-  if (!el) return;
-
-  Chart.defaults.color = PY_TEXT;
-  Chart.defaults.font.family = "'DM Mono', monospace";
-  Chart.defaults.font.size = 10;
-
-  const baseOpts = (yLabel) => ({
-    responsive: true, maintainAspectRatio: true,
-    plugins: { legend: { labels: { color: '#666', padding: 14 } } },
-    scales: {
-      x: { grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } },
-      y: { grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } }
-    }
-  });
-
-  if (cid === 'pyChart0') {
-    // Churn distribution - doughnut
-    pyCharts[cid] = new Chart(el, {
-      type: 'doughnut',
-      data: {
-        labels: ['No Churn (73.46%)', 'Churned (26.54%)'],
-        datasets: [{ data: [5174, 1869], backgroundColor: [PY_BLUE, PY_RED], borderWidth: 0, hoverOffset: 8 }]
-      },
-      options: { responsive: true, maintainAspectRatio: true, cutout: '60%',
-        plugins: { legend: { position: 'bottom', labels: { color: '#777', padding: 16 } } } }
-    });
-  } else if (cid === 'pyChart1') {
-    // Churn by gender
-    pyCharts[cid] = new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: ['Female', 'Male'],
-        datasets: [
-          { label: 'No Churn', data: [2549, 2625], backgroundColor: PY_BLUE + 'bb', borderRadius: 4 },
-          { label: 'Churned', data: [939, 930], backgroundColor: PY_RED + 'bb', borderRadius: 4 }
-        ]
-      },
-      options: { ...baseOpts(), plugins: { legend: { labels: { color: '#666' } } } }
-    });
-  } else if (cid === 'pyChart2') {
-    // Senior citizen stacked
-    pyCharts[cid] = new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: ['Non-Senior', 'Senior Citizen'],
-        datasets: [
-          { label: 'No Churn', data: [4508, 666], backgroundColor: PY_BLUE + 'bb', borderRadius: 4 },
-          { label: 'Churned', data: [1393, 476], backgroundColor: PY_RED + 'bb', borderRadius: 4 }
-        ]
-      },
-      options: { ...baseOpts(),
-        plugins: { legend: { labels: { color: '#666' } } },
-        scales: {
-          x: { stacked: true, grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } },
-          y: { stacked: true, grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } }
-        }
-      }
-    });
-  } else if (cid === 'pyChart3') {
-    // Tenure histogram bins
-    const tenureBins = ['0-6','7-12','13-24','25-36','37-48','49-60','61-72'];
-    pyCharts[cid] = new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: tenureBins,
-        datasets: [
-          { label: 'No Churn', data: [520, 430, 680, 740, 810, 890, 1104], backgroundColor: PY_BLUE+'99', borderRadius: 3 },
-          { label: 'Churned', data: [580, 310, 290, 220, 190, 160, 119], backgroundColor: PY_RED+'99', borderRadius: 3 }
-        ]
-      },
-      options: { ...baseOpts('Customers'),
-        plugins: { legend: { labels: { color: '#666' } } },
-        scales: {
-          x: { grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } },
-          y: { grid: { color: PY_DARK_GRID }, ticks: { color: PY_TEXT } }
-        }
-      }
-    });
-  } else if (cid === 'pyChart4') {
-    // Contract type
-    pyCharts[cid] = new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: ['Month-to-Month', 'One Year', 'Two Year'],
-        datasets: [
-          { label: 'No Churn', data: [2220, 1307, 1647], backgroundColor: PY_BLUE+'bb', borderRadius: 4 },
-          { label: 'Churned', data: [1655, 166, 48], backgroundColor: PY_RED+'bb', borderRadius: 4 }
-        ]
-      },
-      options: { ...baseOpts(), plugins: { legend: { labels: { color: '#666' } } } }
-    });
-  } else if (cid === 'pyChart5') {
-    // Payment method
-    pyCharts[cid] = new Chart(el, {
-      type: 'bar',
-      data: {
-        labels: ['Electronic Check', 'Mailed Check', 'Bank Transfer', 'Credit Card'],
-        datasets: [
-          { label: 'No Churn', data: [1294, 1304, 1286, 1290], backgroundColor: PY_BLUE+'bb', borderRadius: 4 },
-          { label: 'Churned', data: [1071, 258, 258, 232], backgroundColor: PY_RED+'bb', borderRadius: 4 }
-        ]
-      },
-      options: { ...baseOpts(), plugins: { legend: { labels: { color: '#666' } } } }
-    });
-  } else if (cid === 'pyChart6') {
-    // Service features radar
-    pyCharts[cid] = new Chart(el, {
-      type: 'radar',
-      data: {
-        labels: ['PhoneService','MultipleLines','InternetService','OnlineSecurity','OnlineBackup','DeviceProtection','TechSupport','StreamingTV','StreamingMovies'],
-        datasets: [
-          { label: 'Churned (avg churn %)', data: [27, 36, 45, 58, 45, 45, 58, 30, 30],
-            backgroundColor: PY_RED+'22', borderColor: PY_RED, pointBackgroundColor: PY_RED, borderWidth: 1.5 },
-          { label: 'Retained (avg retain %)', data: [73, 64, 55, 42, 55, 55, 42, 70, 70],
-            backgroundColor: PY_BLUE+'22', borderColor: PY_BLUE, pointBackgroundColor: PY_BLUE, borderWidth: 1.5 }
-        ]
-      },
-      options: {
-        responsive: true, maintainAspectRatio: true,
-        plugins: { legend: { labels: { color: '#666', padding: 14 } } },
-        scales: { r: { grid: { color: PY_DARK_GRID }, ticks: { color: '#333', backdropColor: 'transparent' }, pointLabels: { color: '#666', font: { size: 9 } } } }
-      }
-    });
-  }
-}
-
-// render first chart on load
-window.addEventListener('load', () => { renderPyChart('p2'); });
-
-// ===== END PYTHON PROJECT =====
-
-// ===== HR ANALYTICS DASHBOARD =====
-const HR_BLUE = '#e8b84b';
-const HR_GRID = 'rgba(255,255,255,0.04)';
-const HR_TEXT = '#3a4a6a';
-
-const HR_DATA = {
-  all: {
-    kpi: { emp:'1,470', attr:'237', rate:'16.1%', age:'36.9', sal:'₹6.5K', tenure:'7.0' },
-    age: { labels:['18–25','26–35','36–45','46–55','55+'], data:[44,116,43,26,8] },
-    edu: { labels:['Life Sciences','Medical','Marketing','Tech Degree','Other','HR'], data:[89,63,35,32,11,7] },
-    sal: { labels:['Upto 5K','5K–10K','10K–15K','15K+'], data:[163,49,20,5] },
-    tenure: { labels:['1','2','3','4','5','6','7','8','9','10+'], data:[59,25,19,16,33,12,9,10,14,40] },
-    role: { labels:['Lab Technician','Sales Exec','Research Sci.','Sales Rep','Mfg Director','Healthcare Rep','HR','Manager','Research Dir.'], data:[62,57,47,33,10,9,12,5,2] },
-    gender: { male:150, female:87 },
-    pivot: [
-      { role:'Healthcare Rep.',  s:[9,5,7,2], total:23 },
-      { role:'Human Resources',  s:[7,3,1,1], total:12 },
-      { role:'Lab Technician',   s:[20,18,14,10], total:62 },
-      { role:'Manager',          s:[2,1,1,1], total:5 },
-      { role:'Mfg Director',     s:[4,2,2,2], total:10 },
-      { role:'Research Dir.',    s:[1,1,0,0], total:2 },
-      { role:'Research Sci.',    s:[16,12,11,8], total:47 },
-      { role:'Sales Executive',  s:[19,14,14,10], total:57 },
-      { role:'Sales Rep.',       s:[12,8,8,5], total:33 },
-    ]
-  },
-  'R&D': {
-    kpi: { emp:'961', attr:'133', rate:'13.8%', age:'37.2', sal:'₹6.9K', tenure:'7.3' },
-    age: { labels:['18–25','26–35','36–45','46–55','55+'], data:[22,60,28,16,7] },
-    edu: { labels:['Life Sciences','Medical','Tech Degree','Other','Marketing','HR'], data:[55,42,18,10,5,3] },
-    sal: { labels:['Upto 5K','5K–10K','10K–15K','15K+'], data:[78,32,17,6] },
-    tenure: { labels:['1','2','3','4','5','6','7','8','9','10+'], data:[30,14,10,9,20,7,5,6,8,24] },
-    role: { labels:['Lab Technician','Research Sci.','Healthcare Rep','Mfg Director','Research Dir.'], data:[62,47,9,10,2] },
-    gender: { male:82, female:51 },
-    pivot: [
-      { role:'Healthcare Rep.', s:[9,5,7,2], total:23 },
-      { role:'Lab Technician',  s:[20,18,14,10], total:62 },
-      { role:'Mfg Director',    s:[4,2,2,2], total:10 },
-      { role:'Research Dir.',   s:[1,1,0,0], total:2 },
-      { role:'Research Sci.',   s:[16,12,11,8], total:47 },
-    ]
-  },
-  'Sales': {
-    kpi: { emp:'446', attr:'92', rate:'20.6%', age:'36.1', sal:'₹6.0K', tenure:'6.6' },
-    age: { labels:['18–25','26–35','36–45','46–55','55+'], data:[18,44,12,8,1] },
-    edu: { labels:['Life Sciences','Marketing','Medical','Other','Tech Degree','HR'], data:[29,25,16,10,8,4] },
-    sal: { labels:['Upto 5K','5K–10K','10K–15K','15K+'], data:[62,16,3,0] },
-    tenure: { labels:['1','2','3','4','5','6','7','8','9','10+'], data:[22,9,7,6,11,4,3,3,5,12] },
-    role: { labels:['Sales Executive','Sales Rep.','Manager'], data:[57,33,5] },
-    gender: { male:56, female:36 },
-    pivot: [
-      { role:'Manager',          s:[2,1,1,1], total:5 },
-      { role:'Sales Executive',  s:[19,14,14,10], total:57 },
-      { role:'Sales Rep.',       s:[12,8,8,5], total:33 },
-    ]
-  },
-  'HR': {
-    kpi: { emp:'63', attr:'12', rate:'19.0%', age:'37.4', sal:'₹5.1K', tenure:'6.4' },
-    age: { labels:['18–25','26–35','36–45','46–55','55+'], data:[4,12,3,2,0] },
-    edu: { labels:['HR','Life Sciences','Other','Marketing','Medical'], data:[5,3,2,1,1] },
-    sal: { labels:['Upto 5K','5K–10K','10K–15K','15K+'], data:[9,2,1,0] },
-    tenure: { labels:['1','2','3','4','5','6','7','8','9','10+'], data:[7,2,2,1,2,1,1,1,1,4] },
-    role: { labels:['Human Resources'], data:[12] },
-    gender: { male:12, female:0 },
-    pivot: [{ role:'Human Resources', s:[7,3,1,1], total:12 }]
-  }
-};
-
-let hrCharts = {};
-
-function heatClass(val, max) {
-  const r = max ? val/max : 0;
-  if (r === 0) return 'h0';
-  if (r < 0.15) return 'h1';
-  if (r < 0.35) return 'h2';
-  if (r < 0.6)  return 'h3';
-  return 'h4';
-}
-
-function renderHRDashboard(dept) {
-  const d = HR_DATA[dept] || HR_DATA.all;
-  document.getElementById('hk-emp').textContent    = d.kpi.emp;
-  document.getElementById('hk-attr').textContent   = d.kpi.attr;
-  document.getElementById('hk-rate').textContent   = d.kpi.rate;
-  document.getElementById('hk-age').textContent    = d.kpi.age;
-  document.getElementById('hk-sal').textContent    = d.kpi.sal;
-  document.getElementById('hk-tenure').textContent = d.kpi.tenure;
-
-  const maxVal = Math.max(...d.pivot.flatMap(r => r.s));
-  document.getElementById('hrPivotBody').innerHTML = d.pivot.map(row =>
-    `<tr><td class="job-role">${row.role}</td>${row.s.map(v=>`<td class="${heatClass(v,maxVal)}">${v}</td>`).join('')}<td class="tot">${row.total}</td></tr>`
-  ).join('');
-
-  Object.values(hrCharts).forEach(c => c.destroy());
-  hrCharts = {};
-
-  Chart.defaults.color = HR_TEXT;
-  Chart.defaults.font.family = "'DM Mono', monospace";
-  Chart.defaults.font.size = 10;
-
-  const sc = { x:{grid:{color:HR_GRID},ticks:{color:HR_TEXT}}, y:{grid:{color:HR_GRID},ticks:{color:HR_TEXT}} };
-  const noL = { plugins:{legend:{display:false}} };
-
-  hrCharts.age = new Chart(document.getElementById('hrAgeChart'), {
-    type:'bar', data:{ labels:d.age.labels, datasets:[{ data:d.age.data, backgroundColor:d.age.data.map((_,i)=>i===1?HR_BLUE+'dd':'rgba(56,189,248,0.35)'), borderRadius:4 }] },
-    options:{ responsive:true, maintainAspectRatio:true, ...noL, scales:sc }
-  });
-  hrCharts.edu = new Chart(document.getElementById('hrEduChart'), {
-    type:'doughnut', data:{ labels:d.edu.labels, datasets:[{ data:d.edu.data, backgroundColor:['#e8b84b','#0ea5e9','#0284c7','#0369a1','#075985','#0c4a6e'], borderWidth:0, hoverOffset:8 }] },
-    options:{ responsive:true, maintainAspectRatio:true, cutout:'58%', plugins:{legend:{position:'bottom',labels:{color:HR_TEXT,padding:10,font:{size:9}}}} }
-  });
-  hrCharts.sal = new Chart(document.getElementById('hrSalChart'), {
-    type:'bar', data:{ labels:d.sal.labels, datasets:[{ data:d.sal.data, backgroundColor:['#e8b84bdd','rgba(56,189,248,0.55)','rgba(56,189,248,0.35)','rgba(56,189,248,0.2)'], borderRadius:4 }] },
-    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:true, ...noL, scales:{ x:{grid:{color:HR_GRID},ticks:{color:HR_TEXT}}, y:{grid:{display:false},ticks:{color:HR_TEXT}} } }
-  });
-  hrCharts.tenure = new Chart(document.getElementById('hrTenureChart'), {
-    type:'line', data:{ labels:d.tenure.labels, datasets:[{ data:d.tenure.data, borderColor:HR_BLUE, backgroundColor:'rgba(56,189,248,0.08)', fill:true, tension:0.4, pointBackgroundColor:HR_BLUE, pointRadius:3 }] },
-    options:{ responsive:true, maintainAspectRatio:true, ...noL, scales:sc }
-  });
-  hrCharts.role = new Chart(document.getElementById('hrRoleChart'), {
-    type:'bar', data:{ labels:d.role.labels, datasets:[{ data:d.role.data, backgroundColor:'rgba(56,189,248,0.55)', borderRadius:3 }] },
-    options:{ indexAxis:'y', responsive:true, maintainAspectRatio:true, ...noL, scales:{ x:{grid:{color:HR_GRID},ticks:{color:HR_TEXT}}, y:{grid:{display:false},ticks:{color:HR_TEXT,font:{size:9}}} } }
-  });
-  hrCharts.gender = new Chart(document.getElementById('hrGenderChart'), {
-    type:'doughnut', data:{ labels:[`Male (${d.gender.male})`,`Female (${d.gender.female})`], datasets:[{ data:[d.gender.male,d.gender.female], backgroundColor:['#e8b84bcc','rgba(56,189,248,0.28)'], borderWidth:0, hoverOffset:6 }] },
-    options:{ responsive:true, maintainAspectRatio:true, cutout:'55%', plugins:{legend:{position:'bottom',labels:{color:HR_TEXT,padding:12}}} }
-  });
-}
-
-function hrFilter(dept, btn) {
-  document.querySelectorAll('.hr-filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  renderHRDashboard(dept);
-}
-
-window.addEventListener('load', () => { renderHRDashboard('all'); });
-// ===== END HR DASHBOARD =====
-
-</script>
-<script>
-  // Custom cursor: activate only when a real mouse/trackpad pointer is detected.
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  const canUseCustomCursor = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-
-  if (cursor && ring && canUseCustomCursor) {
-    let mx = 0, my = 0, rx = 0, ry = 0;
-
-    document.addEventListener('pointermove', e => {
-      if (e.pointerType === 'touch') return;
-
-      mx = e.clientX;
-      my = e.clientY;
-      cursor.style.left = mx + 'px';
-      cursor.style.top = my + 'px';
-      ring.style.left = mx + 'px';
-      ring.style.top = my + 'px';
-      cursor.style.opacity = '1';
-      ring.style.opacity = '1';
-
-      // The browser cursor is hidden only after this custom cursor is visible.
-      document.documentElement.classList.add('custom-cursor-ready');
-    });
-
-    document.addEventListener('pointerleave', () => {
-      cursor.style.opacity = '0';
-      ring.style.opacity = '0';
+    document.addEventListener('pointerleave', function () {
+      document.documentElement.classList.remove('custom-cursor-active');
+      ring.classList.remove('hovering');
+      active = false;
     });
 
     function animateRing() {
-      rx += (mx - rx) * 0.12;
-      ry += (my - ry) * 0.12;
-      ring.style.left = rx + 'px';
-      ring.style.top = ry + 'px';
-      requestAnimationFrame(animateRing);
-    }
-    animateRing();
-
-    document.querySelectorAll('a, button, [onclick], .project-item, .skill-card, .nb-step, .xl-tab, .hr-filter-btn, .contact-link').forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.style.transform = 'translate(-50%,-50%) scale(0)';
-        ring.style.width = '44px';
-        ring.style.height = '44px';
-        ring.style.borderColor = 'rgba(201,168,76,0.9)';
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.style.transform = 'translate(-50%,-50%) scale(1)';
-        ring.style.width = '30px';
-        ring.style.height = '30px';
-        ring.style.borderColor = 'rgba(201,168,76,0.5)';
-      });
-    });
-  }
-
-  // Data grid animation
-  const grid = document.getElementById('dataGrid');
-  const cols = 12, rows = 16;
-  let cells = [];
-  for (let i = 0; i < cols * rows; i++) {
-    const cell = document.createElement('div');
-    cell.className = 'data-cell';
-    grid.appendChild(cell);
-    cells.push(cell);
-  }
-  function animateCells() {
-    cells.forEach(c => c.className = 'data-cell');
-    const patterns = [
-      // bar chart pattern
-      () => {
-        const heights = [4,6,8,5,10,7,9,3,6,8,5,7];
-        heights.forEach((h, col) => {
-          for (let r = rows - h; r < rows; r++) {
-            cells[r * cols + col].className = 'data-cell active';
-          }
-        });
-      },
-      // scatter plot
-      () => {
-        const points = [[2,3],[4,5],[6,2],[8,7],[10,4],[3,8],[5,11],[7,9],[9,6],[1,13],[11,1]];
-        points.forEach(([c,r]) => {
-          if (cells[r * cols + c]) cells[r * cols + c].className = 'data-cell active2';
-        });
-      },
-      // heatmap
-      () => {
-        cells.forEach((c, i) => {
-          const v = Math.random();
-          if (v > 0.85) c.className = 'data-cell active';
-          else if (v > 0.7) c.className = 'data-cell active2';
-          else if (v > 0.6) c.className = 'data-cell active3';
-        });
+      if (active) {
+        rx += (x - rx) * .22;
+        ry += (y - ry) * .22;
+        ring.style.left = rx + 'px';
+        ring.style.top = ry + 'px';
       }
-    ];
-    let pi = 0;
-    patterns[0]();
-    setInterval(() => {
-      cells.forEach(c => c.className = 'data-cell');
-      pi = (pi + 1) % patterns.length;
-      patterns[pi]();
-    }, 2500);
+      window.requestAnimationFrame(animateRing);
+    }
+    window.requestAnimationFrame(animateRing);
   }
-  animateCells();
 
-  // Scroll reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const eduItems = document.querySelectorAll('.edu-item');
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); }
-    });
-  }, { threshold: 0.15 });
-  reveals.forEach(el => obs.observe(el));
-  eduItems.forEach(el => obs.observe(el));
-
-  // Skill meter animation
-  const meterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.querySelecto
+  /* Content stays visible if JavaScript or IntersectionObserver is unavailable. */
+  var items = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window && items.length) {
+    document.documentElement.classList.add('motion-ready');
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .12 });
+    items.forEach(function (item) { observer.observe(item); });
+  }
+})();
+</script>
+</body>
+</html>
