@@ -33,6 +33,25 @@
 /* Projects */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}.project-card{display:flex;flex-direction:column;min-height:360px;padding:28px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(16,36,58,.92),rgba(10,24,40,.88));transition:transform .22s,border-color .22s,box-shadow .22s}.project-card:hover{transform:translateY(-4px);border-color:rgba(57,230,193,.38);box-shadow:0 18px 45px rgba(0,0,0,.2)}.project-meta{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.project-index{color:var(--mint);font:500 .73rem 'DM Mono',monospace;letter-spacing:.1em}.project-type{padding:5px 9px;border:1px solid rgba(57,230,193,.22);border-radius:999px;color:#9cebdc;font:500 .66rem 'DM Mono',monospace}.project-card h3{margin:0 0 13px;font:700 1.32rem/1.3 'Manrope',sans-serif;letter-spacing:-.025em}.project-card p{margin:0 0 13px;color:var(--muted);font-size:.88rem;line-height:1.8}.project-points{margin:0 0 20px;padding-left:18px;color:#c4d3e2;font-size:.84rem;line-height:1.75}.project-points li{padding-left:4px;margin-bottom:6px}.project-points li::marker{color:var(--mint)}.tech-list{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px}.tech-list span{padding:5px 9px;border:1px solid var(--line);border-radius:7px;color:#a9bfd2;font:500 .66rem 'DM Mono',monospace}.project-result{display:flex;align-items:center;gap:12px;margin-top:auto;padding:14px 15px;border:1px solid rgba(57,230,193,.17);border-radius:12px;background:rgba(57,230,193,.055)}.result-number{color:var(--mint);font:800 1.35rem 'Manrope',sans-serif;white-space:nowrap}.result-label{color:#b2c5d7;font-size:.77rem;line-height:1.45}
 
+/* Featured project showcase inspired by the reference portfolio */
+.project-showcase{display:grid;gap:18px}
+.showcase-project{display:grid;grid-template-columns:92px minmax(0,1fr);gap:25px;padding:30px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(115deg,rgba(16,36,58,.94),rgba(9,23,39,.92));transition:border-color .22s,transform .22s}
+.showcase-project:hover{border-color:rgba(57,230,193,.4);transform:translateY(-3px)}
+.showcase-number{color:var(--mint);font:500 2.2rem 'DM Mono',monospace;letter-spacing:-.08em}
+.showcase-content{min-width:0}
+.showcase-kicker{color:var(--mint);font:500 .68rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase}
+.showcase-project h3{margin:7px 0 12px;font:800 clamp(1.25rem,2.5vw,1.75rem)/1.25 'Manrope',sans-serif;letter-spacing:-.035em}
+.showcase-project p{max-width:850px;margin:0 0 13px;color:var(--muted);font-size:.89rem;line-height:1.85}
+.showcase-detail{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:16px 0}
+.showcase-detail div{color:#c4d3e2;font-size:.82rem;line-height:1.7}
+.showcase-detail strong{display:block;margin-bottom:3px;color:var(--text);font:700 .7rem 'DM Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.showcase-tags,.showcase-links{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:14px}
+.showcase-tags span{padding:5px 10px;border:1px solid var(--line);border-radius:7px;color:#b5c9dc;font:500 .66rem 'DM Mono',monospace}
+.showcase-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(57,230,193,.27);border-radius:8px;color:var(--mint);text-decoration:none;font-size:.77rem;font-weight:700}
+.showcase-links a:hover{background:rgba(57,230,193,.09);border-color:var(--mint)}
+.showcase-note{margin-top:14px!important;color:var(--soft)!important;font-size:.76rem!important}
+@media(max-width:600px){.showcase-project{grid-template-columns:1fr;gap:8px;padding:22px}.showcase-number{font-size:1.65rem}.showcase-detail{grid-template-columns:1fr;gap:9px}}
+
 /* Approach */
 .approach-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.approach-item{padding:20px;border-top:2px solid rgba(57,230,193,.45);background:rgba(13,29,48,.55)}.approach-num{color:var(--mint);font:500 .72rem 'DM Mono',monospace}.approach-item h3{margin:12px 0 7px;font:700 .92rem 'Manrope',sans-serif}.approach-item p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.7}
 
@@ -132,49 +151,68 @@
 <section class="section" id="projects">
 <div class="container">
   <div class="section-heading reveal"><span class="eyebrow">03 / Selected work</span><h2>Projects built around <span class="accent">real questions.</span></h2><p>Independent projects demonstrating dashboard development, predictive analysis, data validation, and business-oriented recommendations.</p></div>
-  <div class="projects-grid">
-    <article class="project-card reveal">
-      <div class="project-meta"><span class="project-index">PROJECT 01 · 2025</span><span class="project-type">Independent project</span></div>
-      <h3>Interactive Sales Dashboard & Funnel Analysis</h3>
-      <p>Built and maintained an interactive Power BI dashboard to track key performance metrics and help users monitor sales performance.</p>
-      <ul class="project-points"><li>Resolved data-refresh and reporting issues for end users.</li><li>Used dynamic filters and optimized visuals to reduce reporting bottlenecks.</li><li>Processed and validated over 50,000 transactional rows to uncover behavioral patterns and sales trends relevant to funnel and conversion analysis.</li></ul>
-      <div class="tech-list"><span>Power BI</span><span>Excel</span><span>Funnel analysis</span><span>Data validation</span></div>
-      <div class="project-result"><span class="result-number">30%</span><span class="result-label">Improvement in reporting speed through dynamic filters and optimized visuals</span></div>
+  <div class="project-showcase">
+    <article class="showcase-project reveal">
+      <div class="showcase-number">01</div>
+      <div class="showcase-content">
+        <span class="showcase-kicker">Sales analytics · Power BI</span>
+        <h3>Interactive Sales Dashboard & Funnel Analysis</h3>
+        <p>An interactive reporting project designed to monitor sales performance, explore conversion patterns and make key metrics easier to track through a consolidated dashboard.</p>
+        <div class="showcase-detail">
+          <div><strong>Focus</strong>Sales KPIs, funnel performance, transactional trends and reporting usability.</div>
+          <div><strong>Work performed</strong>Data validation, dynamic filtering, dashboard layout and performance reporting.</div>
+        </div>
+        <div class="showcase-tags"><span>Power BI</span><span>Excel</span><span>Funnel analysis</span><span>Data validation</span></div>
+        <div class="showcase-links"><a href="https://github.com/surajmishra217/Projects" target="_blank" rel="noopener noreferrer">GitHub Projects ↗</a></div>
+      </div>
     </article>
-    <article class="project-card reveal">
-      <div class="project-meta"><span class="project-index">PROJECT 02 · 2025</span><span class="project-type">Independent project</span></div>
-      <h3>Customer Churn Analysis</h3>
-      <p>Developed a predictive churn workflow combining model validation with cohort-style segmentation to study customer retention patterns.</p>
-      <ul class="project-points"><li>Built, tested, and validated a predictive churn model using structured test cases.</li><li>Analyzed over 20,000 customer records with pandas, numpy, matplotlib, and seaborn.</li><li>Documented data cleaning, validation, methodology, experimentation, and findings to support stakeholder decisions and future troubleshooting.</li></ul>
-      <div class="tech-list"><span>Python</span><span>pandas</span><span>numpy</span><span>matplotlib</span><span>seaborn</span><span>scikit-learn</span></div>
-      <div class="project-result"><span class="result-number">15%</span><span class="result-label">Improvement in predictive model accuracy</span></div>
+    <article class="showcase-project reveal">
+      <div class="showcase-number">02</div>
+      <div class="showcase-content">
+        <span class="showcase-kicker">Customer analytics · Predictive modelling</span>
+        <h3>Customer Churn Analysis</h3>
+        <p>A customer-retention analysis workflow exploring churn patterns and the factors associated with customers leaving a service. The project combines exploratory analysis, data preparation and model evaluation.</p>
+        <div class="showcase-detail">
+          <div><strong>Focus</strong>Customer behaviour, churn patterns, retention indicators and segmentation.</div>
+          <div><strong>Work performed</strong>Data cleaning, exploratory data analysis, feature preparation and predictive model validation.</div>
+        </div>
+        <div class="showcase-tags"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span><span>Scikit-learn</span></div>
+        <div class="showcase-links"><a href="https://github.com/surajmishra217/Projects" target="_blank" rel="noopener noreferrer">GitHub Projects ↗</a></div>
+      </div>
     </article>
-    <article class="project-card reveal">
-      <div class="project-meta"><span class="project-index">PROJECT 03 · 2026</span><span class="project-type">Featured portfolio project</span></div>
-      <h3>E-commerce Sales & Customer Behaviour Analytics</h3>
-      <p><strong>Business objective:</strong> understand what drives online-store revenue and profit, which products and regions perform best, and how customer purchase frequency and value can guide retention decisions.</p>
-      <ul class="project-points">
-        <li><strong>Data preparation:</strong> generated a reproducible synthetic retail dataset covering transactions, customers and products; prepared it for repeatable analysis.</li>
-        <li><strong>Sales performance:</strong> analysed revenue, profit, orders, average order value, units sold and profit margin, including monthly trends.</li>
-        <li><strong>Product & regional analysis:</strong> compared category, product, region and sales-channel performance to highlight revenue and profitability patterns.</li>
-        <li><strong>Customer analytics:</strong> measured repeat purchasing, ranked high-value customers and applied RFM segmentation (recency, frequency and monetary value).</li>
-        <li><strong>BI delivery:</strong> prepared reusable DAX measures and a four-page Power BI dashboard specification for executive, product/region, customer and channel insights.</li>
-      </ul>
-      <div class="tech-list"><span>SQL · SQLite</span><span>Python</span><span>Pandas</span><span>NumPy</span><span>Power BI</span><span>DAX</span><span>RFM</span></div>
-      <div class="project-result"><span class="result-number">₹33.25M</span><span class="result-label">Illustrative revenue across 3,600 simulated orders; 32.88% simulated profit margin</span></div>
-      <div class="project-result"><span class="result-number">93.94%</span><span class="result-label">Illustrative repeat-customer rate in the synthetic sample (not a real business result)</span></div>
-      <p><strong>Key deliverables:</strong> SQL analysis queries, Python analysis script, KPI and performance output files, customer RFM segments, DAX measures and setup documentation.</p>
-      <p><strong>Business questions explored:</strong> Which months and categories contribute most to sales? Where is profit strongest? Which customers are most valuable? Which segments may need re-engagement?</p>
-      <p><em>Data transparency:</em> the dataset is synthetic and generated for this portfolio project. Figures are illustrative, not real company performance or measured business impact.</p>
-      <p><a href="https://github.com/surajmishra217/Projects/tree/main/E-commerce%20Sales%20%26%20Customer%20Behaviour%20Analytics" target="_blank" rel="noopener noreferrer">Explore source code, SQL queries & documentation on GitHub ↗</a></p>
+    <article class="showcase-project reveal">
+      <div class="showcase-number">03</div>
+      <div class="showcase-content">
+        <span class="showcase-kicker">Retail analytics · Featured project · 2026</span>
+        <h3>E-commerce Sales & Customer Behaviour Analytics</h3>
+        <p>An end-to-end retail analytics project built to understand sales performance, profitability, product contribution and customer purchasing behaviour. The workflow uses transaction, customer and product tables, then turns the analysis into reusable outputs for business reporting.</p>
+        <div class="showcase-detail">
+          <div><strong>Business questions</strong>How do sales and profit change over time? Which categories and regions perform best? Who are the most valuable and repeat customers?</div>
+          <div><strong>Analysis</strong>Monthly KPI trends, category and regional comparisons, channel performance, repeat-purchase analysis and RFM customer segmentation.</div>
+          <div><strong>Deliverables</strong>SQL query collection, Python analysis script, KPI outputs, customer RFM segments, Power BI DAX measures and dashboard page plan.</div>
+          <div><strong>Tools & methods</strong>SQL (SQLite), Python, Pandas, NumPy, Power BI, DAX and Recency-Frequency-Monetary segmentation.</div>
+        </div>
+        <div class="showcase-tags"><span>SQL</span><span>Python</span><span>Pandas</span><span>NumPy</span><span>Power BI</span><span>DAX</span><span>RFM</span></div>
+        <div class="showcase-links">
+          <a href="https://github.com/surajmishra217/Projects/tree/main/E-commerce%20Sales%20%26%20Customer%20Behaviour%20Analytics" target="_blank" rel="noopener noreferrer">Project repository ↗</a>
+          <a href="https://github.com/surajmishra217/Projects/blob/main/E-commerce%20Sales%20%26%20Customer%20Behaviour%20Analytics/README.md" target="_blank" rel="noopener noreferrer">Project overview ↗</a>
+        </div>
+        <p class="showcase-note">Dataset is synthetic and generated for portfolio practice. All figures and customer patterns are illustrative, not real company results. A Power BI dashboard file is not yet included; DAX measures and dashboard specifications are provided.</p>
+      </div>
     </article>
-    <article class="project-card reveal">
-      <div class="project-meta"><span class="project-index">PROJECT 04 · 2024</span><span class="project-type">Independent project</span></div>
-      <h3>HR Analytics Dashboard</h3>
-      <p>Developed and maintained a Power BI dashboard in collaboration with functional stakeholders to turn employee data into structured recommendations.</p>
-      <ul class="project-points"><li>Analyzed over 1,000 employee records.</li><li>Streamlined report generation and supported HR performance and retention analysis.</li><li>Translated findings into recommendations aimed at improving employee retention outcomes.</li></ul>
-      <div class="tech-list"><span>Power BI</span><span>Excel</span><span>HR analytics</span><span>Data analysis</span></div>
-      <div class="project-result"><span class="result-number">25%</span><span class="result-label">Reduction in report generation time · 8% retention outcome improvement</span></div>
+    <article class="showcase-project reveal">
+      <div class="showcase-number">04</div>
+      <div class="showcase-content">
+        <span class="showcase-kicker">People analytics · Power BI</span>
+        <h3>HR Analytics Dashboard</h3>
+        <p>A workforce analytics dashboard exploring employee data and HR indicators to support clearer reporting and evidence-based discussions around workforce trends and retention.</p>
+        <div class="showcase-detail">
+          <div><strong>Focus</strong>Employee metrics, workforce patterns and retention indicators.</div>
+          <div><strong>Work performed</strong>Data preparation, KPI reporting, dashboard design and insight communication.</div>
+        </div>
+        <div class="showcase-tags"><span>Power BI</span><span>Excel</span><span>HR analytics</span><span>Data visualization</span></div>
+        <div class="showcase-links"><a href="https://github.com/surajmishra217/Projects" target="_blank" rel="noopener noreferrer">GitHub Projects ↗</a></div>
+      </div>
     </article>
   </div>
 </div>
