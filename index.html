@@ -50,6 +50,10 @@
 .showcase-links a{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border:1px solid rgba(57,230,193,.27);border-radius:8px;color:var(--mint);text-decoration:none;font-size:.77rem;font-weight:700}
 .showcase-links a:hover{background:rgba(57,230,193,.09);border-color:var(--mint)}
 .showcase-note{margin-top:14px!important;color:var(--soft)!important;font-size:.76rem!important}
+.showcase-preview{margin:17px 0 20px;overflow:hidden;border:1px solid rgba(160,190,220,.18);border-radius:14px;background:#0b1728}
+.showcase-preview img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.showcase-preview figcaption{padding:9px 12px;color:var(--soft);font:500 .66rem 'DM Mono',monospace;letter-spacing:.02em}
+
 @media(max-width:600px){.showcase-project{grid-template-columns:1fr;gap:8px;padding:22px}.showcase-number{font-size:1.65rem}.showcase-detail{grid-template-columns:1fr;gap:9px}}
 
 /* Approach */
@@ -156,6 +160,7 @@
       <div class="showcase-number">01</div>
       <div class="showcase-content">
         <span class="showcase-kicker">Sales analytics · Power BI</span>
+        <figure class="showcase-preview"><img src="assets/power-bi-sales-preview.svg" alt="Illustrative Power BI-style sales dashboard showing revenue, profit, order and customer KPIs" loading="lazy"><figcaption>Power BI-style dashboard preview · synthetic portfolio data</figcaption></figure>
         <h3>Interactive Sales Dashboard & Funnel Analysis</h3>
         <p>An interactive reporting project designed to monitor sales performance, explore conversion patterns and make key metrics easier to track through a consolidated dashboard.</p>
         <div class="showcase-detail">
@@ -169,7 +174,8 @@
     <article class="showcase-project reveal">
       <div class="showcase-number">02</div>
       <div class="showcase-content">
-        <span class="showcase-kicker">Customer analytics · Predictive modelling</span>
+        <span class="showcase-kicker">Customer analytics · Tableau-style preview</span>
+        <figure class="showcase-preview"><img src="assets/tableau-churn-preview.svg" alt="Illustrative Tableau-style customer churn and retention analysis dashboard concept" loading="lazy"><figcaption>Tableau-style analysis preview · conceptual layout, not a native workbook</figcaption></figure>
         <h3>Customer Churn Analysis</h3>
         <p>A customer-retention analysis workflow exploring churn patterns and the factors associated with customers leaving a service. The project combines exploratory analysis, data preparation and model evaluation.</p>
         <div class="showcase-detail">
@@ -184,6 +190,7 @@
       <div class="showcase-number">03</div>
       <div class="showcase-content">
         <span class="showcase-kicker">Retail analytics · Featured project · 2026</span>
+        <figure class="showcase-preview"><img src="assets/power-bi-sales-preview.svg" alt="Illustrative Power BI-style e-commerce sales dashboard using the project's synthetic data" loading="lazy"><figcaption>Power BI-style e-commerce dashboard preview · synthetic data</figcaption></figure>
         <h3>E-commerce Sales & Customer Behaviour Analytics</h3>
         <p>An end-to-end retail analytics project built to understand sales performance, profitability, product contribution and customer purchasing behaviour. The workflow uses transaction, customer and product tables, then turns the analysis into reusable outputs for business reporting.</p>
         <div class="showcase-detail">
@@ -203,7 +210,8 @@
     <article class="showcase-project reveal">
       <div class="showcase-number">04</div>
       <div class="showcase-content">
-        <span class="showcase-kicker">People analytics · Power BI</span>
+        <span class="showcase-kicker">People analytics · Excel-style preview</span>
+        <figure class="showcase-preview"><img src="assets/excel-hr-preview.svg" alt="Illustrative Excel-style HR analytics dashboard layout with blank KPI values awaiting verified data" loading="lazy"><figcaption>Excel-style HR dashboard preview · layout only, no employee figures fabricated</figcaption></figure>
         <h3>HR Analytics Dashboard</h3>
         <p>A workforce analytics dashboard exploring employee data and HR indicators to support clearer reporting and evidence-based discussions around workforce trends and retention.</p>
         <div class="showcase-detail">
